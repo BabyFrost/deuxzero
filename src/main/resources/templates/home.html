@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<title>Deux Zero | Sante</title>
+
+<body>
+
+	<p>Bonjour</p>
+
+	<ul>
+		<span th:each="sante,iter : ${santes}">
+			<a data-th-href="@{/santes/{id}(id=${sante.id})}">
+				<li th:utext="${sante.name}"></li>
+			</a>	
+		</span>
+		
+	</ul>
+
+</body>
