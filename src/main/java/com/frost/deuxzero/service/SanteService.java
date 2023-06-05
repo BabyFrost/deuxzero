@@ -19,7 +19,7 @@ public class SanteService {
 	private SanteRepository santeRepository;
 	
 	public Sante getSanteById( Long id ) throws ResourceNotFoundException {	
-		return santeRepository.findById(id).orElseThrow( () -> new ResourceNotFoundException("No such Panier !") );
+		return santeRepository.findById(id).orElseThrow( () -> new ResourceNotFoundException("No such Sante !") );
 	}
 	
 	public List<Sante> getAllSantes() throws ResourceNotFoundException {	

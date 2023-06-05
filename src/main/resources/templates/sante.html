@@ -1,18 +1,150 @@
 <!doctype html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <title>Deux Zero | Sante</title>
+<head>
+	<link th:href="@{/css/style.css}" rel="stylesheet">
+	<style>
+		#customers {
+			font-family: Arial, Helvetica, sans-serif;
+			border-collapse: collapse;
+			width: 100%;
+		}
+		
+		#customers td, #customers th {
+			border: 1px solid #ddd;
+			padding: 8px;
+		}
+		
+		#customers tr:nth-child(even) {
+			background-color: #f2f2f2;
+		}
+		
+		#customers tr:hover {
+			background-color: #ddd;
+		}
+		
+		#customers th {
+			padding-top: 12px;
+			padding-bottom: 12px;
+			text-align: left;
+			background-color: #04AA6D;
+			color: white;
+		}
+	</style>
+</head>
 
 <body>
 
 	<p>Sante</p>
 
-	<ul>
-		<span th:each="joueur,iter : ${joueurs}">
-			<a data-th-href="@{/joueurs/{id}(id=${joueur.id})}">
-				<li th:utext="${joueur.name}"></li>
-			</a>	
-		</span>
-		
-	</ul>
+	<table id="customers">
+		<thead>
+			<tr>
+				<th>JOUEURS</th>
+				<th>POINTS</th>
+				<th>MATCHS</th>
+				<th>VICTOIRES</th>
+				<th>NULS</th>
+				<th>DEFAITES</th>
+				<th>BUTS</th>
+				<th>PASSES</th>
+				<th>BUTS (Equipe)</th>
+				<th>ENCAISSES (Equipe)</th>
+			</tr>
+		</thead>
 
+		<tbody>
+			<tr th:each="joueur,iter : ${joueurs}">
+				
+				<td>
+					<a data-th-href="@{/joueurs/{id}(id=${joueur.id})}"> <span th:utext="${joueur.name}"></span> </a>
+				</td>
+				<td th:utext="${joueur.points}">0</td>
+				<td th:utext="${joueur.matchsJ}">0</td>
+				<td th:utext="${joueur.victoires}">0</td>
+				<td th:utext="${joueur.nuls}">0</td>
+				<td th:utext="${joueur.defaites}">0</td>
+				<td th:utext="${joueur.butsM}">0</td>
+				<td th:utext="${joueur.passesD}">0</td>
+				<td th:utext="${joueur.butsME}">0</td>
+				<td th:utext="${joueur.butsEE}">0</td>
+			</tr>
+
+			<tr th:if="${joueurs.empty}">
+				<td colspan="11" style="text-align: center">Aucun Joueur</td>
+			</tr>
+		</tbody>
+	</table>
 </body>
+
+<script type="text/javascript">
+
+	var properties = [ 'name', 'wins', 'draws', 'losses', 'total', ];
+
+	$.each(properties, function(i, val) {
+
+		var orderClass = '';
+
+		$("#" + val).click(
+				function(e) {
+					e.preventDefault();
+					$('.filter__link.filter__link--active').not(this)
+							.removeClass('filter__link--active');
+					$(this).toggleClass('filter__link--active');
+					$('.filter__link').removeClass('asc desc');
+
+					if (orderClass == 'desc' || orderClass == '') {
+						$(this).addClass('asc');
+						orderClass = 'asc';
+					} else {
+						$(this).addClass('desc');
+						orderClass = 'desc';
+					}
+
+					var parent = $(this).closest('.header__item');
+					var index = $(".header__item").index(parent);
+					var $table = $('.table-content');
+					var rows = $table.find('.table-row').get();
+					var isSelected = $(this).hasClass('filter__link--active');
+					var isNumber = $(this).hasClass('filter__link--number');
+
+					rows.sort(function(a, b) {
+
+						var x = $(a).find('.table-data').eq(index).text();
+						var y = $(b).find('.table-data').eq(index).text();
+
+						if (isNumber == true) {
+
+							if (isSelected) {
+								return x - y;
+							} else {
+								return y - x;
+							}
+
+						} else {
+
+							if (isSelected) {
+								if (x < y)
+									return -1;
+								if (x > y)
+									return 1;
+								return 0;
+							} else {
+								if (x > y)
+									return -1;
+								if (x < y)
+									return 1;
+								return 0;
+							}
+						}
+					});
+
+					$.each(rows, function(index, row) {
+						$table.append(row);
+					});
+
+					return false;
+				});
+
+	});
+</script>
