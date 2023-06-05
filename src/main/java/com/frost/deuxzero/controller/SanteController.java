@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.frost.deuxzero.dto.JoueurDTO;
+import com.frost.deuxzero.dto.MatchDTO;
 import com.frost.deuxzero.model.Joueur;
+import com.frost.deuxzero.model.Match;
 import com.frost.deuxzero.model.MatchEquipe;
 import com.frost.deuxzero.model.Sante;
 import com.frost.deuxzero.service.SanteService;
@@ -28,6 +30,15 @@ public class SanteController {
 		
 		Sante sante = santeService.getSanteById(id);
 		
+		List<Match> matchs = sante.getMatchs();
+		List<MatchDTO> matchsDTO = new ArrayList<>();
+		for (int i=0; i<matchs.size(); i++) {
+			Match match = matchs.get(i);
+			MatchDTO matchDTO = new MatchDTO( match );
+			
+			matchsDTO.add( matchDTO );
+		}
+
 		List<Joueur> joueurs = sante.getJoueurs();
 		List<JoueurDTO> joueursDTO = new ArrayList<>();
 		for (int i=0; i<joueurs.size(); i++) {
@@ -68,6 +79,7 @@ public class SanteController {
 		}
 		
 		model.addAttribute("joueurs", joueursDTO);
+		model.addAttribute("matchs", matchsDTO);
     	return "sante";
     }
 	

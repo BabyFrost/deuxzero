@@ -1,5 +1,6 @@
 package com.frost.deuxzero.dto;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +10,7 @@ import com.frost.deuxzero.model.Match;
 public class MatchDTO {
 	
     private Long id;
+    private String date;
 	private SanteDTO sante;
 	private MatchEquipeDTO equipeA;
 	private MatchEquipeDTO equipeB;
@@ -19,6 +21,7 @@ public class MatchDTO {
 	public MatchDTO ( Match match) {
 		
 		this.id = match.getId();
+		this.date = new SimpleDateFormat("dd/MM/yyyy").format( match.getDate() );
 		this.sante = new SanteDTO( match.getSante() );
 		this.equipeA = new MatchEquipeDTO( match.getEquipeA() );
 		this.equipeB = new MatchEquipeDTO( match.getEquipeB() );
@@ -36,6 +39,14 @@ public class MatchDTO {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
 	}
 
 	public SanteDTO getSante() {

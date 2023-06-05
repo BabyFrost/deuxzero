@@ -34,6 +34,9 @@ public class Match {
 	@Column(name = "ID")
     private Long id;
 	
+	@Column(name = "DATE")
+    private Long date;
+	
 	@ManyToOne
 	@JsonBackReference(value="matchs_sante")
 	@JoinColumn(name="SANTE")

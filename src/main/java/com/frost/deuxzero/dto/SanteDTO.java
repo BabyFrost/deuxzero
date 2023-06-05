@@ -12,9 +12,9 @@ public class SanteDTO {
 	
 	private Long id;
 	private String name;
-	private List<JoueurDTO> joueurs = new ArrayList<>();
-	private List<MatchDTO> matchs = new ArrayList<>();
-	private List<EquipeDTO> equipes = new ArrayList<>();
+	private List<JoueurDTOShort> joueurs = new ArrayList<>();
+	private List<MatchDTOShort> matchs = new ArrayList<>();
+	private List<EquipeDTOShort> equipes = new ArrayList<>();
 	
 	public SanteDTO() { }
 	
@@ -25,17 +25,17 @@ public class SanteDTO {
 		
 		List<Joueur> listJoueurs = sante.getJoueurs();
 		for ( int i=0; i<listJoueurs.size(); i++ ) {
-			joueurs.add( new JoueurDTO( listJoueurs.get(i) ) );
+			joueurs.add( new JoueurDTOShort( listJoueurs.get(i) ) );
 		}
 		
 		List<Match> listMatchs =sante.getMatchs();
 		for ( int i=0; i<listMatchs.size(); i++ ) {
-			matchs.add( new MatchDTO( listMatchs.get(i) ) );
+			matchs.add( new MatchDTOShort( listMatchs.get(i) ) );
 		}
 		
 		List<Equipe> listEquipes = sante.getEquipes();
 		for ( int i=0; i<listEquipes.size(); i++ ) {
-			equipes.add( new EquipeDTO( listEquipes.get(i) ) );
+			equipes.add( new EquipeDTOShort( listEquipes.get(i) ) );
 		}
 		
 	}
@@ -56,27 +56,27 @@ public class SanteDTO {
 		this.name = name;
 	}
 
-	public List<JoueurDTO> getJoueurs() {
+	public List<JoueurDTOShort> getJoueurs() {
 		return joueurs;
 	}
 
-	public void setJoueurs(List<JoueurDTO> joueurs) {
+	public void setJoueurs(List<JoueurDTOShort> joueurs) {
 		this.joueurs = joueurs;
 	}
 
-	public List<MatchDTO> getMatchs() {
+	public List<MatchDTOShort> getMatchs() {
 		return matchs;
 	}
 
-	public void setMatchs(List<MatchDTO> matchs) {
+	public void setMatchs(List<MatchDTOShort> matchs) {
 		this.matchs = matchs;
 	}
 
-	public List<EquipeDTO> getEquipes() {
+	public List<EquipeDTOShort> getEquipes() {
 		return equipes;
 	}
 
-	public void setEquipes(List<EquipeDTO> equipes) {
+	public void setEquipes(List<EquipeDTOShort> equipes) {
 		this.equipes = equipes;
 	}
 

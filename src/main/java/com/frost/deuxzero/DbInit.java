@@ -177,6 +177,9 @@ public class DbInit {
 			equipeRepository.save(equipe);
 		
 		Match match = new Match();
+		match.setSante(sante);
+		match.setDate( 1685833200000L );
+		//match.setDate( DateFormatConverter.toLocalDateTimeInMilliseconds(new Date()) );
 		matchRepository.save(match);
 		
 		MatchEquipe matchEquipe = new MatchEquipe();
