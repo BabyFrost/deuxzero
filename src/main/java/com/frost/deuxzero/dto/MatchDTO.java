@@ -15,6 +15,7 @@ public class MatchDTO {
 	private MatchEquipeDTO equipeA;
 	private MatchEquipeDTO equipeB;
 	private List<ButDTO> buts = new ArrayList<>();
+	private JoueurDTOShort motm;
 	
 	public MatchDTO () { }
 	
@@ -25,6 +26,7 @@ public class MatchDTO {
 		this.sante = new SanteDTO( match.getSante() );
 		this.equipeA = new MatchEquipeDTO( match.getEquipeA() );
 		this.equipeB = new MatchEquipeDTO( match.getEquipeB() );
+		this.motm = new JoueurDTOShort( match.getMotm() );
 		
 		List<But> listButs = match.getButs();
 		for ( int i=0; i<listButs.size(); i++ ) {
@@ -79,6 +81,14 @@ public class MatchDTO {
 
 	public void setButs(List<ButDTO> buts) {
 		this.buts = buts;
+	}
+
+	public JoueurDTOShort getMotm() {
+		return motm;
+	}
+
+	public void setMotm(JoueurDTOShort motm) {
+		this.motm = motm;
 	}
 
 }

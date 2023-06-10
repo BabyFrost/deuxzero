@@ -55,5 +55,10 @@ public class Match {
 	@OneToMany(mappedBy = "match", cascade=CascadeType.ALL)
 	@JsonManagedReference(value="buts_match")
 	private List<But> buts = new ArrayList<>();
+	
+	@ManyToOne
+	@JsonBackReference(value="motm_joueur")
+	@JoinColumn(name="MOTM")
+	private Joueur motm;
 
 }

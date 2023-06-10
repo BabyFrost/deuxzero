@@ -65,13 +65,13 @@ public class SanteController {
 					defaites++;
 				}		
 			}
-			joueurDTO.setMatchsJ( joueurDTO.getMatchs().size() );
+			//joueurDTO.setMatchsJ( joueurDTO.getMatchs().size() );
 			joueurDTO.setPoints(points);
 			joueurDTO.setVictoires(victoires);
 			joueurDTO.setNuls(nuls);
 			joueurDTO.setDefaites(defaites);
-			joueurDTO.setButsM( joueurDTO.getButs().size() );
-			joueurDTO.setPassesD( joueurDTO.getPasses().size() );
+			//joueurDTO.setButsM( joueurDTO.getButs().size() );
+			//joueurDTO.setPassesD( joueurDTO.getPasses().size() );
 			joueurDTO.setButsME( butsME );
 			joueurDTO.setButsEE( butsEE );
 			

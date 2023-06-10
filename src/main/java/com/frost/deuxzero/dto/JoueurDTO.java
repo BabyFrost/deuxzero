@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.frost.deuxzero.model.But;
 import com.frost.deuxzero.model.Joueur;
+import com.frost.deuxzero.model.Match;
 import com.frost.deuxzero.model.MatchEquipe;
 
 public class JoueurDTO {
@@ -16,6 +17,7 @@ public class JoueurDTO {
 	private List<MatchEquipeDTOShort> capitanats = new ArrayList<>();
 	private List<ButDTOShort> buts = new ArrayList<>();
 	private List<ButDTOShort> passes = new ArrayList<>();
+	private List<MatchDTOShort> motms = new ArrayList<>();
 	private int points;
 	private int matchsJ;
 	private int victoires;
@@ -25,6 +27,7 @@ public class JoueurDTO {
 	private int passesD;
 	private int butsME;
 	private int butsEE;
+	private int motmsR;
 	
 	public JoueurDTO () { }
 	
@@ -53,6 +56,16 @@ public class JoueurDTO {
 		for ( int i=0; i<listPasses.size(); i++ ) {
 			passes.add( new ButDTOShort( listPasses.get(i) ) );
 		}
+		
+		List<Match> listMotms = joueur.getMotms();
+		for ( int i=0; i<listMotms.size(); i++ ) {
+			motms.add( new MatchDTOShort( listMotms.get(i) ) );
+		}
+		
+		this.matchsJ = matchs.size();
+		this.butsM = buts.size();
+		this.passesD = passes.size();
+		this.motmsR = motms.size();
 		
 	}
 
@@ -182,6 +195,22 @@ public class JoueurDTO {
 
 	public void setButsEE(int butsEE) {
 		this.butsEE = butsEE;
+	}
+
+	public List<MatchDTOShort> getMotms() {
+		return motms;
+	}
+
+	public void setMotms(List<MatchDTOShort> motms) {
+		this.motms = motms;
+	}
+
+	public int getMotmsR() {
+		return motmsR;
+	}
+
+	public void setMotmsR(int motmsR) {
+		this.motmsR = motmsR;
 	}
 
 }

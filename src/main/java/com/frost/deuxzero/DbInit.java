@@ -178,7 +178,8 @@ public class DbInit {
 		
 		Match match = new Match();
 		match.setSante(sante);
-		match.setDate( 1685833200000L );
+		match.setMotm( joueurRepository.findByName( "BASSOGOG" ).get() );
+		match.setDate( 1685876400000L );
 		//match.setDate( DateFormatConverter.toLocalDateTimeInMilliseconds(new Date()) );
 		matchRepository.save(match);
 		

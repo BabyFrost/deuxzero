@@ -22,6 +22,7 @@
 					<th></th>
 					<th></th>
 					<th>EQUIPE B</th>
+					<th>HOMME DU MATCH</th>
 					<th></th>
 				</tr>
 			</thead>
@@ -33,8 +34,9 @@
 					<td th:utext="${match.equipeA.marques}">0</td>
 					<td th:utext="${match.equipeB.marques}">0</td>
 					<td th:utext="${match.equipeB.equipe.name} + ' ('+ ${match.equipeB.capitaine.name} +')'">0</td>
+					<td th:utext="${match.motm.name}">0</td>
 					<td>
-						<a data-th-href="@{/matchs/{id}(id=${match.id})}"> Details </a>
+						<a data-th-href="@{/matchs/{id}(id=${match.id})}"> Plus ... </a>
 					</td>
 				</tr>
 
@@ -54,15 +56,16 @@
 			<thead>
 				<tr>
 					<th>JOUEURS</th>
-					<th>POINTS</th>
 					<th>MATCHS</th>
 					<th>VICTOIRES</th>
 					<th>NULS</th>
 					<th>DEFAITES</th>
 					<th>BUTS</th>
 					<th>PASSES</th>
-					<th>BUTS (Equipe)</th>
-					<th>ENCAISSES (Equipe)</th>
+<!-- 					<th>BUTS (Equipe)</th> -->
+<!-- 					<th>ENCAISSES (Equipe)</th> -->
+					<th>POINTS</th>
+					<th>HOMMES DU MATCH</th>
 				</tr>
 			</thead>
 
@@ -72,15 +75,16 @@
 					<td><a data-th-href="@{/joueurs/{id}(id=${joueur.id})}"> <span
 							th:utext="${joueur.name}"></span>
 					</a></td>
-					<td th:utext="${joueur.points}">0</td>
 					<td th:utext="${joueur.matchsJ}">0</td>
 					<td th:utext="${joueur.victoires}">0</td>
 					<td th:utext="${joueur.nuls}">0</td>
 					<td th:utext="${joueur.defaites}">0</td>
 					<td th:utext="${joueur.butsM}">0</td>
 					<td th:utext="${joueur.passesD}">0</td>
-					<td th:utext="${joueur.butsME}">0</td>
-					<td th:utext="${joueur.butsEE}">0</td>
+<!-- 					<td th:utext="${joueur.butsME}">0</td> -->
+<!-- 					<td th:utext="${joueur.butsEE}">0</td> -->
+					<td th:utext="${joueur.points}">0</td>
+					<td th:utext="${joueur.motmsR}">0</td>
 				</tr>
 
 				<tr th:if="${joueurs.empty}">
