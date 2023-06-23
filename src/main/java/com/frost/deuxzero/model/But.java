@@ -46,5 +46,8 @@ public class But {
 	@JsonBackReference(value="buts_match")
 	@JoinColumn(name="MATCH")
 	private Match match;
+	
+	@Column(name = "MINUTE")
+    private int minute;
 
 }

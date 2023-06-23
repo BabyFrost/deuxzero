@@ -16,7 +16,11 @@ public class ButDTO {
 		
 		this.id = but.getId();
 		this.buteur = new JoueurDTOShort( but.getButeur() );
-		this.passeur = new JoueurDTOShort( but.getPasseur() );
+		
+		if ( but.getPasseur() != null ) {
+			this.passeur = new JoueurDTOShort( but.getPasseur() );
+		}
+		
 		this.equipe = new MatchEquipeDTOShort( but.getEquipe() );
 		this.match = new MatchDTOShort( but.getMatch() );
 		

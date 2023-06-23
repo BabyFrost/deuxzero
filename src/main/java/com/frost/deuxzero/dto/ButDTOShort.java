@@ -14,7 +14,11 @@ public class ButDTOShort {
 		
 		this.id = but.getId();
 		this.buteur = but.getButeur().getId();
-		this.passeur = but.getPasseur().getId();
+		
+		if ( but.getPasseur() != null ) {
+			this.passeur = but.getPasseur().getId();
+		}
+		
 		
 	}
 
