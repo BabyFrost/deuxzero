@@ -62,5 +62,5 @@ public class Joueur {
 	
 	@OneToMany(mappedBy = "motm", cascade=CascadeType.ALL)
 	@JsonManagedReference(value="motm_joueur")
-	private List<Match> motms = new ArrayList<>();
+	private List<Matchx> motms = new ArrayList<>();
 }

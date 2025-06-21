@@ -44,8 +44,8 @@ public class But {
 	
 	@ManyToOne
 	@JsonBackReference(value="buts_match")
-	@JoinColumn(name="MATCH")
-	private Match match;
+	@JoinColumn(name="MATCH_X")
+	private Matchx match;
 	
 	@Column(name = "MINUTE")
     private int minute;

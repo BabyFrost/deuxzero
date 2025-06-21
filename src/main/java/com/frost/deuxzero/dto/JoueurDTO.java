@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.frost.deuxzero.model.But;
 import com.frost.deuxzero.model.Joueur;
-import com.frost.deuxzero.model.Match;
+import com.frost.deuxzero.model.Matchx;
 import com.frost.deuxzero.model.MatchEquipe;
 
 public class JoueurDTO {
@@ -20,14 +20,21 @@ public class JoueurDTO {
 	private List<MatchDTOShort> motms = new ArrayList<>();
 	private int points;
 	private int matchsJ;
+	private int capitanatsJ;
 	private int victoires;
 	private int nuls;
 	private int defaites;
+	private int victoiresCapitanat;
+	private int nulsCapitanat;
+	private int defaitesCapitanat;
 	private int butsM;
 	private int passesD;
 	private int butsME;
 	private int butsEE;
+	private int cleanSheets;
 	private int motmsR;
+	private int valeurM;
+	private String formeR;
 	
 	public JoueurDTO () { }
 	
@@ -57,16 +64,21 @@ public class JoueurDTO {
 			passes.add( new ButDTOShort( listPasses.get(i) ) );
 		}
 		
-		List<Match> listMotms = joueur.getMotms();
+		List<Matchx> listMotms = joueur.getMotms();
 		for ( int i=0; i<listMotms.size(); i++ ) {
 			motms.add( new MatchDTOShort( listMotms.get(i) ) );
 		}
 		
 		this.matchsJ = matchs.size();
+		this.capitanatsJ = capitanats.size();
 		this.butsM = buts.size();
 		this.passesD = passes.size();
 		this.motmsR = motms.size();
 		
+	}
+	
+	public void calculateValeurM() {
+		this.valeurM = this.points + (this.butsM*5) + (this.passesD*3);
 	}
 
 	public Long getId() {
@@ -165,6 +177,38 @@ public class JoueurDTO {
 		this.defaites = defaites;
 	}
 
+	public int getCapitanatsJ() {
+		return capitanatsJ;
+	}
+
+	public void setCapitanatsJ(int capitanatsJ) {
+		this.capitanatsJ = capitanatsJ;
+	}
+
+	public int getVictoiresCapitanat() {
+		return victoiresCapitanat;
+	}
+
+	public void setVictoiresCapitanat(int victoiresCapitanat) {
+		this.victoiresCapitanat = victoiresCapitanat;
+	}
+
+	public int getNulsCapitanat() {
+		return nulsCapitanat;
+	}
+
+	public void setNulsCapitanat(int nulsCapitanat) {
+		this.nulsCapitanat = nulsCapitanat;
+	}
+
+	public int getDefaitesCapitanat() {
+		return defaitesCapitanat;
+	}
+
+	public void setDefaitesCapitanat(int defaitesCapitanat) {
+		this.defaitesCapitanat = defaitesCapitanat;
+	}
+
 	public int getButsM() {
 		return butsM;
 	}
@@ -195,6 +239,30 @@ public class JoueurDTO {
 
 	public void setButsEE(int butsEE) {
 		this.butsEE = butsEE;
+	}
+
+	public int getCleanSheets() {
+		return cleanSheets;
+	}
+
+	public void setCleanSheets(int cleanSheets) {
+		this.cleanSheets = cleanSheets;
+	}
+
+	public int getValeurM() {
+		return valeurM;
+	}
+
+	public void setValeurM(int valeurM) {
+		this.valeurM = valeurM;
+	}
+
+	public String getFormeR() {
+		return formeR;
+	}
+
+	public void setFormeR(String formeR) {
+		this.formeR = formeR;
 	}
 
 	public List<MatchDTOShort> getMotms() {

@@ -57,6 +57,7 @@
 				<tr>
 					<th>JOUEURS</th>
 					<th>MATCHS</th>
+					<th>POINTS</th>
 					<th>VICTOIRES</th>
 					<th>NULS</th>
 					<th>DEFAITES</th>
@@ -64,8 +65,9 @@
 					<th>PASSES</th>
 <!-- 					<th>BUTS (Equipe)</th> -->
 <!-- 					<th>ENCAISSES (Equipe)</th> -->
-					<th>POINTS</th>
 					<th>HOMMES DU MATCH</th>
+					<th>VALEUR MARCHANDE</th>
+					<th>FORME RECENTE</th>
 				</tr>
 			</thead>
 
@@ -76,6 +78,7 @@
 							th:utext="${joueur.name}"></span>
 					</a></td>
 					<td th:utext="${joueur.matchsJ}">0</td>
+					<td th:utext="${joueur.points}">0</td>
 					<td th:utext="${joueur.victoires}">0</td>
 					<td th:utext="${joueur.nuls}">0</td>
 					<td th:utext="${joueur.defaites}">0</td>
@@ -83,8 +86,9 @@
 					<td th:utext="${joueur.passesD}">0</td>
 <!-- 					<td th:utext="${joueur.butsME}">0</td> -->
 <!-- 					<td th:utext="${joueur.butsEE}">0</td> -->
-					<td th:utext="${joueur.points}">0</td>
 					<td th:utext="${joueur.motmsR}">0</td>
+					<td th:utext="${joueur.valeurM}">0</td>
+					<td th:utext="${joueur.formeR}">0</td>
 				</tr>
 
 				<tr th:if="${joueurs.empty}">

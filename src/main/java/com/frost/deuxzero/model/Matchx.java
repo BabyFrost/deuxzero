@@ -27,7 +27,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @Entity
-public class Match {
+public class Matchx {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

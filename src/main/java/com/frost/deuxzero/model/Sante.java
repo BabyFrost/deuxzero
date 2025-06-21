@@ -39,7 +39,7 @@ public class Sante {
 	
 	@OneToMany(mappedBy = "sante", cascade=CascadeType.ALL)
 	@JsonManagedReference(value="matchs_sante")
-	private List<Match> matchs = new ArrayList<>();
+	private List<Matchx> matchs = new ArrayList<>();
 	
 	@OneToMany(mappedBy = "sante", cascade=CascadeType.ALL)
 	@JsonManagedReference(value="equipes_sante")

@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.frost.deuxzero.model.Equipe;
 import com.frost.deuxzero.model.Joueur;
-import com.frost.deuxzero.model.Match;
+import com.frost.deuxzero.model.Matchx;
 import com.frost.deuxzero.model.Sante;
 
 public class SanteDTO {
@@ -28,7 +28,7 @@ public class SanteDTO {
 			joueurs.add( new JoueurDTOShort( listJoueurs.get(i) ) );
 		}
 		
-		List<Match> listMatchs =sante.getMatchs();
+		List<Matchx> listMatchs =sante.getMatchs();
 		for ( int i=0; i<listMatchs.size(); i++ ) {
 			matchs.add( new MatchDTOShort( listMatchs.get(i) ) );
 		}

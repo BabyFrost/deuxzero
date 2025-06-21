@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<title>Deux Zero | Sante</title>
+<link th:href="@{/css/style.css}" rel="stylesheet">
+<head>
+	<link th:href="@{/css/style.css}" rel="stylesheet">
+</head>
+
+<body>
+
+	<div>
+		<h1>PROFIL DU JOUEUR </h1>
+		<b>NOM : </b> <span th:text="${joueur.name}"></span> <br>
+		<b>VALEUR MARCHANDE : </b> <span th:text="${joueur.valeurM}"></span> <br>
+		<b>POINTS : </b> <span th:text="${joueur.points}"></span> <br>
+		<b>FORME RECENTE : </b> <span th:text="${joueur.formeR}"></span> <br>
+		<b>MATCHS : </b> <span th:text="${joueur.matchsJ}+' ( '+${joueur.victoires}+'V - '+${joueur.nuls}+'N - '+${joueur.defaites}+'D )'"></span> <br>
+		<b>CAPITANATS : </b> <span th:text="${joueur.capitanatsJ}+' ( '+${joueur.victoiresCapitanat}+'V - '+${joueur.nulsCapitanat}+'N - '+${joueur.defaitesCapitanat}+'D )'"></span> <br>
+		<b>BUTS : </b> <span th:text="${joueur.butsM}"></span> <br>
+		<b>PASSES DECISIVES : </b> <span th:text="${joueur.passesD}"></span> <br>
+		<b>CLEAN SHEETS : </b> <span th:text="${joueur.cleanSheets}"></span> <br>
+		<b>HOMMES DU MATCH : </b> <span th:text="${joueur.motmsR}"></span> <br>
+	</div>
+	
+	<div>
+	
+		<h1>Matchs</h1>
+
+		<table id="customers">
+			<thead>
+				<tr>
+					<th>DATE</th>
+					<th>EQUIPE A</th>
+					<th></th>
+					<th></th>
+					<th>EQUIPE B</th>
+					<th>HOMME DU MATCH</th>
+					<th></th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr th:each="match,iter : ${matchs}">
+					<td th:utext="${match.date}">0</td>			
+					<td th:utext="${match.equipeA.equipe.name} + ' ('+ ${match.equipeA.capitaine.name} +')'">0</td>
+					<td th:utext="${match.equipeA.marques}">0</td>
+					<td th:utext="${match.equipeB.marques}">0</td>
+					<td th:utext="${match.equipeB.equipe.name} + ' ('+ ${match.equipeB.capitaine.name} +')'">0</td>
+					<td th:utext="${match.motm.name}">0</td>
+					<td>
+						<a data-th-href="@{/matchs/{id}(id=${match.id})}"> Plus ... </a>
+					</td>
+				</tr>
+
+				<tr th:if="${matchs.empty}">
+					<td colspan="11" style="text-align: center">Aucun Match</td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+	
+</body>

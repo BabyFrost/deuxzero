@@ -1,6 +1,6 @@
 package com.frost.deuxzero.dto;
 
-import com.frost.deuxzero.model.Match;
+import com.frost.deuxzero.model.Matchx;
 
 public class MatchDTOShort {
 	
@@ -10,7 +10,7 @@ public class MatchDTOShort {
 	
 	public MatchDTOShort () { }
 	
-	public MatchDTOShort ( Match match) {
+	public MatchDTOShort ( Matchx match) {
 		
 		this.id = match.getId();
 		this.equipeA = match.getEquipeA().getId();

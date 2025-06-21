@@ -56,12 +56,12 @@ public class MatchEquipe {
 	@OneToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "MATCH_AS_A", referencedColumnName = "ID")
 	@JsonManagedReference(value="equipeA_match")
-	private Match matchsAsA;
+	private Matchx matchsAsA;
 	
 	@OneToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "MATCH_AS_B", referencedColumnName = "ID")
 	@JsonManagedReference(value="equipeB_match")
-	private Match matchsAsB;
+	private Matchx matchsAsB;
 	
 	@ManyToMany( cascade=CascadeType.REMOVE )
 	@JoinTable( name = "T_JOUEURS_EQUIPE", joinColumns = @JoinColumn(name = "JOUEUR"), inverseJoinColumns = @JoinColumn(name = "EQUIPE") )

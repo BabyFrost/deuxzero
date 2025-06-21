@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.frost.deuxzero.model.But;
-import com.frost.deuxzero.model.Match;
+import com.frost.deuxzero.model.Matchx;
 
 public class MatchDTO {
 	
@@ -19,7 +19,7 @@ public class MatchDTO {
 	
 	public MatchDTO () { }
 	
-	public MatchDTO ( Match match) {
+	public MatchDTO ( Matchx match) {
 		
 		this.id = match.getId();
 		this.date = new SimpleDateFormat("dd/MM/yyyy").format( match.getDate() );
