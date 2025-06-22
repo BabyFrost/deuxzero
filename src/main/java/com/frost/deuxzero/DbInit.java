@@ -1304,6 +1304,56 @@ public class DbInit {
 			joueurRepository.save(joueur);
 			
 			joueur = new Joueur();
+			joueur.setName("RONI");
+			joueur.setSante(sante);
+			joueurRepository.save(joueur);
+			
+			joueur = new Joueur();
+			joueur.setName("LOGICIEL");
+			joueur.setSante(sante);
+			joueurRepository.save(joueur);
+			
+			joueur = new Joueur();
+			joueur.setName("BRUCE");
+			joueur.setSante(sante);
+			joueurRepository.save(joueur);
+
+			joueur = new Joueur();
+			joueur.setName("ZIZOU");
+			joueur.setSante(sante);
+			joueurRepository.save(joueur);
+			
+			joueur = new Joueur();
+			joueur.setName("LANAYAL");
+			joueur.setSante(sante);
+			joueurRepository.save(joueur);
+			
+			joueur = new Joueur();
+			joueur.setName("FRANKLIN");
+			joueur.setSante(sante);
+			joueurRepository.save(joueur);
+			
+			joueur = new Joueur();
+			joueur.setName("ONDJOCK");
+			joueur.setSante(sante);
+			joueurRepository.save(joueur);
+			
+			joueur = new Joueur();
+			joueur.setName("EZEKIEL");
+			joueur.setSante(sante);
+			joueurRepository.save(joueur);
+			
+			joueur = new Joueur();
+			joueur.setName("NAO");
+			joueur.setSante(sante);
+			joueurRepository.save(joueur);
+			
+			joueur = new Joueur();
+			joueur.setName("KEVIN BROWN");
+			joueur.setSante(sante);
+			joueurRepository.save(joueur);
+			
+			joueur = new Joueur();
 			joueur.setName("PNJ");
 			joueur.setSante(sante);
 			joueurRepository.save(joueur);
@@ -1322,10 +1372,15 @@ public class DbInit {
 			equipe.setName("237 MCARTHUR");
 			equipe.setSante(sante);
 			equipeRepository.save(equipe);
+			
+			
+			
+			
+		//////// MCARTHUR MATCH 1 ///////////
 				
 		match = new Matchx();
 		match.setSante(sante);
-		match.setMotm( joueurRepository.findByName( "THIERRY" ).get() );
+		match.setMotm( joueurRepository.findByName( "PNJ" ).get() );
 		match.setDate( 1750266000000L );
 		//match.setDate( DateFormatConverter.toLocalDateTimeInMilliseconds(new Date()) );
 		matchRepository.save(match);
@@ -1337,6 +1392,8 @@ public class DbInit {
 		matchEquipe.getJoueurs().add( joueurRepository.findByName( "EBELLE" ).get() );
 		matchEquipe.getJoueurs().add( joueurRepository.findByName( "ALAIN" ).get() );
 		matchEquipe.getJoueurs().add( joueurRepository.findByName( "WELL" ).get() );
+		matchEquipe.getJoueurs().add( joueurRepository.findByName( "ZIZOU" ).get() );
+		matchEquipe.getJoueurs().add( joueurRepository.findByName( "LOGICIEL" ).get() );
 		matchEquipe.setResultat("D");
 		matchEquipe.setMarques(1);
 		matchEquipe.setEncaisses(2);
@@ -1351,6 +1408,8 @@ public class DbInit {
 			matchEquipe.getJoueurs().add( joueurRepository.findByName( "CLOTAIRE" ).get() );
 			matchEquipe.getJoueurs().add( joueurRepository.findByName( "YVAN" ).get() );
 			matchEquipe.getJoueurs().add( joueurRepository.findByName( "THIERRY" ).get() );
+			matchEquipe.getJoueurs().add( joueurRepository.findByName( "LANAYAL" ).get() );
+			matchEquipe.getJoueurs().add( joueurRepository.findByName( "BRUCE" ).get() );
 			matchEquipe.setResultat("V");
 			matchEquipe.setMarques(2);
 			matchEquipe.setEncaisses(1);
@@ -1367,7 +1426,7 @@ public class DbInit {
 			but = new But();
 			but.setEquipe(matchEquipeRepository.findById((long) 6).get());
 			but.setMatch(match);
-			but.setButeur(joueurRepository.findByName("PNJ").get());
+			but.setButeur(joueurRepository.findByName("LANAYAL").get());
 			but.setPasseur(joueurRepository.findByName("PNJ").get());
 			but.setMinute(75);
 			butRepository.save(but);
@@ -1379,6 +1438,61 @@ public class DbInit {
 			but.setPasseur(joueurRepository.findByName("PNJ").get());
 			but.setMinute(85);
 			butRepository.save(but);
+			
+			
+			
+			
+		//////// MCARTHUR MATCH 1 ///////////
+		match = new Matchx();
+		match.setSante(sante);
+		match.setMotm( joueurRepository.findByName( "PNJ" ).get() );
+		match.setDate( 1750438800000L );
+		//match.setDate( DateFormatConverter.toLocalDateTimeInMilliseconds(new Date()) );
+		matchRepository.save(match);
+			
+			matchEquipe = new MatchEquipe();
+			matchEquipe.setEquipe( equipeRepository.findById((long) 5).get() );
+			matchEquipe.setMatchsAsA(match);
+			matchEquipe.setCapitaine( joueurRepository.findByName( "ARMEL" ).get() );
+			matchEquipe.getJoueurs().add( joueurRepository.findByName( "EBELLE" ).get() );
+			matchEquipe.getJoueurs().add( joueurRepository.findByName( "ALAIN" ).get() );
+			matchEquipe.getJoueurs().add( joueurRepository.findByName( "WELL" ).get() );
+			matchEquipe.getJoueurs().add( joueurRepository.findByName( "JOSEPH" ).get() );
+			matchEquipe.getJoueurs().add( joueurRepository.findByName( "ZIZOU" ).get() );
+			matchEquipe.getJoueurs().add( joueurRepository.findByName( "PANDEV" ).get() );
+			matchEquipe.getJoueurs().add( joueurRepository.findByName( "ARMEL" ).get() );
+			matchEquipe.getJoueurs().add( joueurRepository.findByName( "ARMAND" ).get() );
+			matchEquipe.getJoueurs().add( joueurRepository.findByName( "LOGICIEL" ).get() );
+			matchEquipe.getJoueurs().add( joueurRepository.findByName( "FRANKLIN" ).get() );
+			matchEquipe.getJoueurs().add( joueurRepository.findByName( "ONDJOCK" ).get() );
+			matchEquipe.setResultat("D");
+			matchEquipe.setMarques(0);
+			matchEquipe.setEncaisses(1);
+			matchEquipeRepository.save(matchEquipe);
+			
+				matchEquipe = new MatchEquipe();
+				matchEquipe.setEquipe( equipeRepository.findById((long) 6).get() );
+				matchEquipe.setMatchsAsB(match);
+				matchEquipe.setCapitaine( joueurRepository.findByName( "KEVIN" ).get() );
+				matchEquipe.getJoueurs().add( joueurRepository.findByName( "KEVIN" ).get() );
+				matchEquipe.getJoueurs().add( joueurRepository.findByName( "YVAN" ).get() );
+				matchEquipe.getJoueurs().add( joueurRepository.findByName( "LANAYAL" ).get() );
+				matchEquipe.getJoueurs().add( joueurRepository.findByName( "KAMGA" ).get() );
+				matchEquipe.getJoueurs().add( joueurRepository.findByName( "EZEKIEL" ).get() );
+				matchEquipe.getJoueurs().add( joueurRepository.findByName( "BRUCE" ).get() );
+				matchEquipe.getJoueurs().add( joueurRepository.findByName( "LEONEL" ).get() );
+				matchEquipe.setResultat("V");
+				matchEquipe.setMarques(1);
+				matchEquipe.setEncaisses(0);
+				matchEquipeRepository.save(matchEquipe);
+		
+				but = new But();
+				but.setEquipe(matchEquipeRepository.findById((long) 6).get());
+				but.setMatch(match);
+				but.setButeur(joueurRepository.findByName("PNJ").get());
+				but.setPasseur(joueurRepository.findByName("PNJ").get());
+				but.setMinute(75);
+				butRepository.save(but);
 				
 	}
 

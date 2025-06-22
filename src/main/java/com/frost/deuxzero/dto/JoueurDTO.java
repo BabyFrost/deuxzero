@@ -78,7 +78,14 @@ public class JoueurDTO {
 	}
 	
 	public void calculateValeurM() {
-		this.valeurM = this.points + (this.butsM*5) + (this.passesD*3);
+		/* Points de Valeur Marchande
+		 * Match jouees = 1 pts,
+		 * Points = 1 pts,
+		 * But = 5 pts,
+		 * Passe Decisive = 3 pts,
+		 * Man of the match = 3 pts,
+		 */
+		this.valeurM = this.points + this.matchsJ + (this.butsM*5) + (this.passesD*3) + (this.motmsR*3);
 	}
 
 	public Long getId() {
