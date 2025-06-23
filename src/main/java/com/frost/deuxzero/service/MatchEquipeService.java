@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.frost.deuxzero.exception.ResourceConflictException;
 import com.frost.deuxzero.exception.ResourceNotFoundException;
 import com.frost.deuxzero.model.MatchEquipe;
+import com.frost.deuxzero.model.Matchx;
 import com.frost.deuxzero.repository.MatchEquipeRepository;
 
 @Service
@@ -20,6 +21,14 @@ public class MatchEquipeService {
 	
 	public MatchEquipe getMatchEquipeById( Long id ) throws ResourceNotFoundException {	
 		return matchEquipeRepository.findById(id).orElseThrow( () -> new ResourceNotFoundException("No such MatchEquipe !") );
+	}
+	
+	public MatchEquipe getMatchEquipeDomicile( Matchx matchsAsA ) throws ResourceNotFoundException {	
+		return matchEquipeRepository.findByMatchsAsA(matchsAsA).orElseThrow( () -> new ResourceNotFoundException("No such MatchEquipe !") );
+	}
+	
+	public MatchEquipe getMatchEquipeExterieur( Matchx matchsAsB ) throws ResourceNotFoundException {	
+		return matchEquipeRepository.findByMatchsAsB(matchsAsB).orElseThrow( () -> new ResourceNotFoundException("No such MatchEquipe !") );
 	}
 	
 	public List<MatchEquipe> getAllMatchEquipes() throws ResourceNotFoundException {	

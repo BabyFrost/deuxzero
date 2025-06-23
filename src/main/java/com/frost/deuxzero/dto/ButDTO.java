@@ -9,6 +9,8 @@ public class ButDTO {
 	private JoueurDTOShort passeur;
 	private MatchEquipeDTOShort equipe;
 	private MatchDTOShort match;
+	private int minute;
+	private String score;
 	
 	public ButDTO () { }
 	
@@ -23,6 +25,8 @@ public class ButDTO {
 		
 		this.equipe = new MatchEquipeDTOShort( but.getEquipe() );
 		this.match = new MatchDTOShort( but.getMatch() );
+		this.minute = but.getMinute();
+		this.score = but.getScore();
 		
 	}
 
@@ -64,6 +68,22 @@ public class ButDTO {
 
 	public void setMatch(MatchDTOShort match) {
 		this.match = match;
+	}
+
+	public int getMinute() {
+		return minute;
+	}
+
+	public void setMinute(int minute) {
+		this.minute = minute;
+	}
+
+	public String getScore() {
+		return score;
+	}
+
+	public void setScore(String score) {
+		this.score = score;
 	}
 
 }

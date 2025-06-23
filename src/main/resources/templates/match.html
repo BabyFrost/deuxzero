@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<title>Deux Zero | Sante</title>
+<link th:href="@{/css/style.css}" rel="stylesheet">
+<head>
+	<link th:href="@{/css/style.css}" rel="stylesheet">
+</head>
+
+<body>
+
+	<div th:replace="fragments/header :: nav"></div>
+	
+	<div>
+	
+		<h1>Match Details</h1>
+
+		<table id="customers">
+			<thead>
+				<tr>
+					<th>DATE</th>
+					<th>EQUIPE A</th>
+					<th></th>
+					<th></th>
+					<th>EQUIPE B</th>
+					<th>HOMME DU MATCH</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr>
+					<td th:utext="${match.date}">0</td>			
+					<td th:utext="${match.equipeA.equipe.name} + ' ('+ ${match.equipeA.capitaine.name} +')'">0</td>
+					<td th:utext="${match.equipeA.marques}">0</td>
+					<td th:utext="${match.equipeB.marques}">0</td>
+					<td th:utext="${match.equipeB.equipe.name} + ' ('+ ${match.equipeB.capitaine.name} +')'">0</td>
+					<td th:utext="${match.motm.name}">0</td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+	
+	<div>
+	
+		<h1>BUTS</h1>
+		
+		<table id="customers">
+			<thead>
+				<tr>
+					<th>Minute</th>
+					<th>Buteur</th>
+					<th>Passeur</th>
+					<th>Score</th>
+				</tr>
+			</thead>
+	
+			<tbody>
+				<tr th:each="but,iter : ${buts}">
+					<td th:text="${but.minute} + ''">Minute</td>
+					<td th:utext="${but.buteur.name}">Buteur</td>
+					<td th:utext="${but.passeur.name}">Passeur</td>
+					<td th:utext="${but.score}">Score</td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+	
+	<div class="joueurs" id="joueurs" style="display: flex; gap: 20px;">
+		<div class="joueurs" id="joueurs-domicile" style="flex: 1;">
+		
+			<h1 th:utext="${match.equipeA.equipe.name}"></h1>
+
+			<table id="customers">
+				<thead>
+					<tr>
+						<th>NOM</th>
+						<th>BUTS</th>
+						<th>PASSES</th>
+					</tr>
+				</thead>
+	
+				<tbody>
+					<tr th:each="joueurDomicile,iter : ${joueursDomicile}">
+						<td th:utext="${joueurDomicile.name}">0</td>
+						<td th:utext="${joueurDomicile.butsM}">0</td>
+						<td th:utext="${joueurDomicile.passesD}">0</td>
+					</tr>
+				</tbody>
+			</table>
+			
+		</div>
+		
+		<div class="joueurs" id="joueurs-exterieur" style="flex: 1;">
+		
+			<h1 th:utext="${match.equipeB.equipe.name}"></h1>
+
+			<table id="customers">
+				<thead>
+					<tr>
+						<th>NOM</th>
+						<th>BUTS</th>
+						<th>PASSES</th>
+					</tr>
+				</thead>
+	
+				<tbody>
+					<tr th:each="joueurExterieur,iter : ${joueursExterieur}">
+						<td th:utext="${joueurExterieur.name}">0</td>
+						<td th:utext="${joueurExterieur.butsM}">0</td>
+						<td th:utext="${joueurExterieur.passesD}">0</td>
+					</tr>
+				</tbody>
+			</table>
+		
+		</div>
+	</div>
+	
+	<div>
+	
+		<h1>Match Highlight</h1>
+		
+		<table id="customers">
+			<thead>
+				<tr>
+					<th>Highlight</th>
+				</tr>
+			</thead>
+	
+			<tbody>
+				<tr th:each="highlight,iter : ${highlights}">
+					<td th:utext="${highlight.description}">Highlight</td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+	
+</body>

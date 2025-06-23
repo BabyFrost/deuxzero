@@ -4,11 +4,14 @@
 
 <body>
 
+	<div th:replace="fragments/header :: nav"></div>
+
 	<p>Bonjour</p>
 	
-	<p>LANAYAL a marqué 3 buts lors de son premier match, pour faire gagner son équipe 3-0 en entrant en cours de match en plus, 
-		malheureusement l'histoire ne le retiendra pas. 
-		Ne soyez pas LANAYAL, Gravez vos performances dans l'histoire.</p>
+	<p>LANAYAL a marqué 3 buts lors de son premier match, pour faire gagner son équipe 3-0 en entrant en cours de match en plus, Performance Exceptionnelle</p>
+	<p>KAMGA a marqué un but de la tête, au petit goals en plus, but exceptionnel.</p>
+	<p>malheureusement l'histoire ne retiendra pas.</p>
+	<p>Ne soyez ni KAMGA ni LANAYAL, Gravez vos performances dans l'histoire</p><br>
 
 	<ul>
 		<span th:each="sante,iter : ${santes}">

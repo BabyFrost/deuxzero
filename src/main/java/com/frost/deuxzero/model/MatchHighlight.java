@@ -1,5 +1,7 @@
 package com.frost.deuxzero.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,7 +22,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @Entity
-public class But {
+public class MatchHighlight {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,29 +30,11 @@ public class But {
     private Long id;
 	
 	@ManyToOne
-	@JsonBackReference(value="buts_joueur")
-	@JoinColumn(name="BUTEUR")
-	private Joueur buteur;
-	
-	@ManyToOne
-	@JsonBackReference(value="passes_joueur")
-	@JoinColumn(name="PASSEUR")
-	private Joueur passeur;
-	
-	@ManyToOne
-	@JsonBackReference(value="buts_equipe")
-	@JoinColumn(name="EQUIPE")
-	private MatchEquipe equipe;
-	
-	@ManyToOne
 	@JsonBackReference(value="buts_match")
 	@JoinColumn(name="MATCH_X")
 	private Matchx match;
 	
-	@Column(name = "MINUTE")
-    private int minute;
-	
-	@Column(name = "SCORE")
-    private String score;
+	@Column(name = "description")
+    private String description;
 
 }
