@@ -30,11 +30,21 @@ public class MatchHighlight {
     private Long id;
 	
 	@ManyToOne
-	@JsonBackReference(value="buts_match")
+	@JsonBackReference(value="highlights_match")
 	@JoinColumn(name="MATCH_X")
 	private Matchx match;
 	
-	@Column(name = "description")
+	@ManyToOne
+	@JsonBackReference(value="highlights_equipe")
+	@JoinColumn(name="EQUIPE")
+	private MatchEquipe equipe;
+	
+	@ManyToOne
+	@JsonBackReference(value="highlights_joueur")
+	@JoinColumn(name="JOUEUR")
+	private Joueur joueur;
+	
+	@Column(name = "DESCRIPTION")
     private String description;
 
 }

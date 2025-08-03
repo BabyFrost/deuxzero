@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admin/fragments/admin-header :: head"></head>
+<head>
+    <link rel="stylesheet" th:href="@{/css/admin/admin-access-box-style.css}" />
+</head>
+
+<body>
+
+	<div th:replace="fragments/header :: header"></div>
+	
+	<div class="access-wrapper-container">
+		<section class="access-wrapper">
+	        <div class="access-box">
+	        	<h1>🔐 Accès réservé | Section Admin </h1>
+	            <p>Entrez votre code pour continuer</p>
+	            <form th:action="@{/admin/validate-code}" method="post">
+	                <input type="text" name="code" placeholder="Code d'accès" required />
+	                <button type="submit">Valider</button>
+	            </form>
+	            <p th:if="${error}" class="alert alert-danger fade-in" th:text="${error}"></p>
+	        </div>
+	    </section>
+	</div>
+    
+    
+    <div th:replace="admin/fragments/admin-footer :: footer"></div>
+</body>
+</html>

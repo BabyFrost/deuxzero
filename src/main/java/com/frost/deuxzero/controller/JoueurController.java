@@ -12,11 +12,18 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.frost.deuxzero.dto.JoueurDTO;
+import com.frost.deuxzero.dto.JoueurHighlightDTO;
 import com.frost.deuxzero.dto.MatchDTO;
+import com.frost.deuxzero.dto.MatchHighlightDTO;
+import com.frost.deuxzero.dto.MatchJoueurDTO;
+import com.frost.deuxzero.model.But;
 import com.frost.deuxzero.model.Joueur;
 import com.frost.deuxzero.model.MatchEquipe;
+import com.frost.deuxzero.model.MatchHighlight;
 import com.frost.deuxzero.model.Matchx;
+import com.frost.deuxzero.service.ButService;
 import com.frost.deuxzero.service.JoueurService;
+import com.frost.deuxzero.service.MatchEquipeService;
 import com.frost.deuxzero.utils.MatchComparator;
 
 @Controller
@@ -25,6 +32,12 @@ public class JoueurController {
 	
 	@Autowired
 	private JoueurService joueurService;
+	
+	@Autowired
+	private ButService butService;
+	
+	@Autowired
+	private MatchEquipeService matchEquipeService;
 	
 	@GetMapping("/{id}")
     public String getJoueur ( Model model, @PathVariable Long id ) {
@@ -46,10 +59,8 @@ public class JoueurController {
 		
 		List<MatchEquipe> matchsJoueur = joueur.getMatchs();
 		Collections.sort(matchsJoueur, new MatchComparator() );
-		System.out.println(joueur.getName());
 		for ( int j=0; j<matchsJoueur.size(); j++) {
 			MatchEquipe matchEquipe = matchsJoueur.get(j);
-			System.out.print(matchEquipe.getId());
 			butsME += matchEquipe.getMarques();
 			butsEE += matchEquipe.getEncaisses();
 			
@@ -61,16 +72,13 @@ public class JoueurController {
 				victoires++;
 				points+=3;
 				forme.add("V");
-				System.out.println(" V");
 			} else if ( matchEquipe.getResultat().equals("N") ) {
 				nuls++;
 				points+=1;
 				forme.add("N");
-				System.out.println(" N");
 			} else if ( matchEquipe.getResultat().equals("D") ) {
 				defaites++;
 				forme.add("D");
-				System.out.println(" D");
 			}		
 		}
 		
@@ -82,7 +90,6 @@ public class JoueurController {
 		for ( int j=0; j<=size; j++ ) {
 			
 			if ( j>size || j > 4  ) {
-				System.out.println(" Breaking");
 				break;
 			}
 			
@@ -122,27 +129,41 @@ public class JoueurController {
 		joueurDTO.calculateValeurM();
 		joueurDTO.setFormeR(formeR);
 		
-		List<Matchx> matchs = new ArrayList<>();
-		List<MatchEquipe> matchsEquipes = joueur.getMatchs();
-		for ( MatchEquipe matchEquipe : matchsEquipes ) {
-			if ( matchEquipe.getMatchsAsA() != null ) {
-				//matchs.add( matchService.getMatchByEquipeA(matchEquipe) );
-				matchs.add( matchEquipe.getMatchsAsA() );
-			} else {
-				//matchs.add( matchService.getMatchByEquipeB(matchEquipe) );
-				matchs.add( matchEquipe.getMatchsAsB() );
-			}
-		}
-		List<MatchDTO> matchsDTO = new ArrayList<>();
-		for (int i=0; i<matchs.size(); i++) {
-			Matchx match = matchs.get(i);
-			MatchDTO matchDTO = new MatchDTO( match );
-			
-			matchsDTO.add( matchDTO );
+		List<JoueurHighlightDTO> joueurHighlightsDTOList = new ArrayList<>();
+		for (MatchHighlight highlight : joueur.getHighlights() ) {
+			joueurHighlightsDTOList.add( new JoueurHighlightDTO(highlight) );
 		}
 		
+		List<Matchx> matchs = new ArrayList<>();
+		List<MatchEquipe> matchsEquipes = joueur.getMatchs();
+		List<MatchJoueurDTO> matchsJoueurDTOList = new ArrayList<>();
+		for ( MatchEquipe matchEquipe : matchsEquipes ) {
+			
+			Matchx match = new Matchx();
+			if ( matchEquipe.getMatchsAsA() != null ) {
+				
+				match = matchEquipe.getMatchsAsA();
+				
+			} else {
+				
+				match = matchEquipe.getMatchsAsB();
+				
+			}
+			
+			for (MatchHighlight highlight : matchEquipe.getHighlights() ) {
+				joueurHighlightsDTOList.add( new JoueurHighlightDTO(highlight) );
+			}
+			
+			MatchJoueurDTO matchJoueurDTO = new MatchJoueurDTO( match, joueur );
+			matchJoueurDTO.setResultat( matchEquipe.getResultat() );
+			matchsJoueurDTOList.add( matchJoueurDTO );
+		}
+		
+		
+		
 		model.addAttribute("joueur", joueurDTO);
-		model.addAttribute("matchs", matchsDTO);
+		model.addAttribute("matchs", matchsJoueurDTOList);
+		model.addAttribute("highlights", joueurHighlightsDTOList);
 		return "joueur";
 	}
 

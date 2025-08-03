@@ -1,103 +1,156 @@
 <!doctype html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<title>Deux Zero | Sante</title>
-<link th:href="@{/css/style.css}" rel="stylesheet">
-<head>
-	<link th:href="@{/css/style.css}" rel="stylesheet">
-</head>
+<head th:replace="fragments/header :: head"></head>
 
 <body>
 
-	<div th:replace="fragments/header :: nav"></div>
+	<div th:replace="fragments/header :: header"></div>
+	
+	<form method="get" th:action="@{__${#httpServletRequest.requestURI}__}" class="month-filter-form">
+		<label for="month">Filtrer par mois :</label>
+		<select name="month" id="month" onchange="this.form.submit()">
+			<option value="0">-- Tous les mois --</option>
+			<option value="1" th:selected="${param.month?.toString() == '1'}">Janvier</option>
+			<option value="2" th:selected="${param.month?.toString() == '2'}">Février</option>
+			<option value="3" th:selected="${param.month?.toString() == '3'}">Mars</option>
+			<option value="4" th:selected="${param.month?.toString() == '4'}">Avril</option>
+			<option value="5" th:selected="${param.month?.toString() == '5'}">Mai</option>
+			<option value="6" th:selected="${param.month?.toString() == '6'}">Juin</option>
+			<option value="7" th:selected="${param.month?.toString() == '7'}">Juillet</option>
+			<option value="8" th:selected="${param.month?.toString() == '8'}">Août</option>
+			<option value="9" th:selected="${param.month?.toString() == '9'}">Septembre</option>
+			<option value="10" th:selected="${param.month?.toString() == '10'}">Octobre</option>
+			<option value="11" th:selected="${param.month?.toString() == '11'}">Novembre</option>
+			<option value="12" th:selected="${param.month?.toString() == '12'}">Décembre</option>
+		</select>
+	</form>
 	
 	<div>
 	
 		<h1>Matchs</h1>
 
-		<table id="customers">
-			<thead>
-				<tr>
-					<th>DATE</th>
-					<th>EQUIPE A</th>
-					<th></th>
-					<th></th>
-					<th>EQUIPE B</th>
-					<th>HOMME DU MATCH</th>
-					<th></th>
-				</tr>
-			</thead>
-
-			<tbody>
-				<tr th:each="match,iter : ${matchs}">
-					<td th:utext="${match.date}">0</td>			
-					<td th:utext="${match.equipeA.equipe.name} + ' ('+ ${match.equipeA.capitaine.name} +')'">0</td>
-					<td th:utext="${match.equipeA.marques}">0</td>
-					<td th:utext="${match.equipeB.marques}">0</td>
-					<td th:utext="${match.equipeB.equipe.name} + ' ('+ ${match.equipeB.capitaine.name} +')'">0</td>
-					<td th:utext="${match.motm.name}">0</td>
-					<td>
-						<a data-th-href="@{/matchs/{id}(id=${match.id})}"> Plus ... </a>
-					</td>
-				</tr>
-
-				<tr th:if="${joueurs.empty}">
-					<td colspan="11" style="text-align: center">Aucun Joueur</td>
-				</tr>
-			</tbody>
-		</table>
+		<div class="table-responsive">
+			<table class="branded-table">
+				<thead>
+					<tr>
+						<th>DATE</th>
+						<th>EQUIPE A</th>
+						<th></th>
+						<th></th>
+						<th>EQUIPE B</th>
+						<th>HOMME DU MATCH</th>
+						<th></th>
+					</tr>
+				</thead>
+	
+				<tbody>
+					<tr th:each="match,iter : ${matchs}">
+						<td th:utext="${match.date}">0</td>			
+						<td th:utext="${match.equipeA.equipe.name} + ' ('+ ${match.equipeA.capitaine.name} +')'">0</td>
+						<td th:utext="${match.equipeA.marques}">0</td>
+						<td th:utext="${match.equipeB.marques}">0</td>
+						<td th:utext="${match.equipeB.equipe.name} + ' ('+ ${match.equipeB.capitaine.name} +')'">0</td>
+						<td th:utext="${match.motm.name}">0</td>
+						<td>
+							<a data-th-href="@{/matchs/{id}(id=${match.id})}"> Plus ... </a>
+						</td>
+					</tr>
+	
+					<tr th:if="${joueurs.empty}">
+						<td colspan="11" style="text-align: center">Aucun Joueur</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 
 	</div>
 	
 	<div>
 	
 		<h1>Joueurs</h1>
-
-		<table id="customers">
-			<thead>
-				<tr>
-					<th>JOUEURS</th>
-					<th>MATCHS</th>
-					<th>POINTS</th>
-					<th>VICTOIRES</th>
-					<th>NULS</th>
-					<th>DEFAITES</th>
-					<th>BUTS</th>
-					<th>PASSES</th>
-<!-- 					<th>BUTS (Equipe)</th> -->
-<!-- 					<th>ENCAISSES (Equipe)</th> -->
-					<th>HOMMES DU MATCH</th>
-					<th>VALEUR MARCHANDE</th>
-					<th>FORME RECENTE</th>
-				</tr>
-			</thead>
-
-			<tbody>
-				<tr th:each="joueur,iter : ${joueurs}">
-
-					<td><a data-th-href="@{/joueurs/{id}(id=${joueur.id})}"> <span
-							th:utext="${joueur.name}"></span>
-					</a></td>
-					<td th:utext="${joueur.matchsJ}">0</td>
-					<td th:utext="${joueur.points}">0</td>
-					<td th:utext="${joueur.victoires}">0</td>
-					<td th:utext="${joueur.nuls}">0</td>
-					<td th:utext="${joueur.defaites}">0</td>
-					<td th:utext="${joueur.butsM}">0</td>
-					<td th:utext="${joueur.passesD}">0</td>
-<!-- 					<td th:utext="${joueur.butsME}">0</td> -->
-<!-- 					<td th:utext="${joueur.butsEE}">0</td> -->
-					<td th:utext="${joueur.motmsR}">0</td>
-					<td th:utext="${joueur.valeurM}">0</td>
-					<td th:utext="${joueur.formeR}">0</td>
-				</tr>
-
-				<tr th:if="${joueurs.empty}">
-					<td colspan="11" style="text-align: center">Aucun Joueur</td>
-				</tr>
-			</tbody>
-		</table>
+		
+		<div class="table-responsive">
+			<table class="branded-table sortable">
+				<thead>
+					<tr>
+						<th data-sort="string">JOUEURS</th>
+						<th data-sort="number">MATCHS</th>
+						<th data-sort="number">POINTS</th>
+						<th data-sort="number">VICTOIRES</th>
+						<th data-sort="number">NULS</th>
+						<th data-sort="number">DEFAITES</th>
+						<th data-sort="number">BUTS</th>
+						<th data-sort="number">PASSES</th>
+	<!-- 					<th>BUTS (Equipe)</th> -->
+	<!-- 					<th>ENCAISSES (Equipe)</th> -->
+						<th data-sort="number">HOMMES DU MATCH</th>
+						<th data-sort="number">VALEUR MARCHANDE</th>
+						<th>FORME RECENTE</th>
+					</tr>
+				</thead>
+	
+				<tbody>
+					<tr th:each="joueur,iter : ${joueurs}">
+	
+						<td><a data-th-href="@{/joueurs/{id}(id=${joueur.id})}"> <span
+								th:utext="${joueur.name}"></span>
+						</a></td>
+						<td th:utext="${joueur.matchsJ}">0</td>
+						<td th:utext="${joueur.points}">0</td>
+						<td th:utext="${joueur.victoires}">0</td>
+						<td th:utext="${joueur.nuls}">0</td>
+						<td th:utext="${joueur.defaites}">0</td>
+						<td th:utext="${joueur.butsM}">0</td>
+						<td th:utext="${joueur.passesD}">0</td>
+	<!-- 					<td th:utext="${joueur.butsME}">0</td> -->
+	<!-- 					<td th:utext="${joueur.butsEE}">0</td> -->
+						<td th:utext="${joueur.motmsR}">0</td>
+						<td th:utext="${joueur.valeurM}">0</td>
+						<td th:utext="${joueur.formeR}">0</td>
+					</tr>
+	
+					<tr th:if="${joueurs.empty}">
+						<td colspan="11" style="text-align: center">Aucun Joueur</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 
 	</div>
 
+	<div th:replace="fragments/footer :: footer"></div>
 	
 </body>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.sortable th').forEach(function (header, columnIndex) {
+      header.style.cursor = 'pointer';
+      header.addEventListener('click', function () {
+        const table = header.closest('table');
+        const tbody = table.querySelector('tbody');
+        const rows = Array.from(tbody.querySelectorAll('tr')).filter(r => r.querySelectorAll('td').length > 0);
+        const type = header.dataset.sort || 'string';
+        const ascending = !header.classList.contains('sorted-asc');
+
+        // Clear other sort indicators
+        table.querySelectorAll('th').forEach(th => th.classList.remove('sorted-asc', 'sorted-desc'));
+
+        header.classList.add(ascending ? 'sorted-asc' : 'sorted-desc');
+
+        rows.sort((a, b) => {
+          const aText = a.cells[columnIndex].textContent.trim();
+          const bText = b.cells[columnIndex].textContent.trim();
+
+          if (type === 'number') {
+            return ascending ? (parseFloat(aText) - parseFloat(bText)) : (parseFloat(bText) - parseFloat(aText));
+          } else {
+            return ascending ? aText.localeCompare(bText) : bText.localeCompare(aText);
+          }
+        });
+
+        rows.forEach(row => tbody.appendChild(row));
+      });
+    });
+  });
+</script>

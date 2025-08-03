@@ -2,6 +2,7 @@ package com.frost.deuxzero.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -37,6 +38,15 @@ public class Joueur {
 	@Column(name = "NAME")
     private String name;
 	
+	@Column(name = "FIRSTNAME")
+    private String firstname;
+	
+	@Column(name = "LASTNAME")
+    private String lastname;
+	
+	@Column(name = "HANDLE")
+    private String handle;
+	
 	@ManyToOne
 	@JsonBackReference(value="jouers_sante")
 	@JoinColumn(name="SANTE")
@@ -47,6 +57,10 @@ public class Joueur {
 	@ManyToMany(  mappedBy="joueurs" )
 	@JsonBackReference(value="joueurs_de_equipe")
 	private List<MatchEquipe> matchs = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "joueur", cascade=CascadeType.ALL)
+	@JsonManagedReference(value="highlights_joueur")
+	private List<MatchHighlight> highlights = new ArrayList<>();
 	
 	@OneToMany(mappedBy = "capitaine", cascade=CascadeType.ALL)
 	@JsonManagedReference(value="capitaine_equipe")
@@ -63,4 +77,25 @@ public class Joueur {
 	@OneToMany(mappedBy = "motm", cascade=CascadeType.ALL)
 	@JsonManagedReference(value="motm_joueur")
 	private List<Matchx> motms = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "votant", cascade=CascadeType.ALL)
+	@JsonManagedReference(value="MotmVotant_joueur")
+	private List<MotmVote> mesVotes = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "vote", cascade=CascadeType.ALL)
+	@JsonManagedReference(value="MotmVote_joueur")
+	private List<MotmVote> votesRecus = new ArrayList<>();
+	
+	@Override
+	public int hashCode() {
+	    return Objects.hash(id); // only use ID or simple immutable fields
+	}
+	
+	@Override
+	public boolean equals(Object o) {
+	    if (this == o) return true;
+	    if (o == null || getClass() != o.getClass()) return false;
+	    Joueur joueur = (Joueur) o;
+	    return Objects.equals(id, joueur.id);
+	}
 }

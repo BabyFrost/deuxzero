@@ -1,5 +1,9 @@
 package com.frost.deuxzero.service;
 
+import java.time.LocalDateTime;
+import java.time.Year;
+import java.time.ZoneId;
+import java.time.temporal.TemporalAdjusters;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -47,6 +51,12 @@ public class MatchService {
 	public List<Matchx> getAllMatchsBySanteOrderByDateAsc( Sante sante ) throws ResourceNotFoundException {	
 		List<Matchx> matchs = new ArrayList<>();	
 		matchRepository.findBySanteOrderByDateAsc( sante ).forEach(matchs::add);	
+		return matchs;
+	}
+	
+	public List<Matchx> getAllMatchsBySanteAndDateBetweenOrderByDateAsc( Sante sante, long startDate, long endDate) throws ResourceNotFoundException {
+		List<Matchx> matchs = new ArrayList<>();	
+		matchRepository.findBySanteAndDateBetweenOrderByDateAsc( sante, startDate, endDate ).forEach(matchs::add);	
 		return matchs;
 	}
 	

@@ -12,6 +12,10 @@ public class SanteDTO {
 	
 	private Long id;
 	private String name;
+	private String logo;
+	private String country;
+	private String address;
+	private String manager;
 	private List<JoueurDTOShort> joueurs = new ArrayList<>();
 	private List<MatchDTOShort> matchs = new ArrayList<>();
 	private List<EquipeDTOShort> equipes = new ArrayList<>();
@@ -22,9 +26,15 @@ public class SanteDTO {
 		
 		this.id = sante.getId();
 		this.name = sante.getName();
+		this.logo = sante.getLogo();
+		this.country = sante.getCountry();
+		this.address = sante.getAddress();
+		this.manager = sante.getManager();
+		
 		
 		List<Joueur> listJoueurs = sante.getJoueurs();
 		for ( int i=0; i<listJoueurs.size(); i++ ) {
+			if (listJoueurs.get(i).getName().equals("PNJ") ) continue;
 			joueurs.add( new JoueurDTOShort( listJoueurs.get(i) ) );
 		}
 		
@@ -54,6 +64,38 @@ public class SanteDTO {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getLogo() {
+		return logo;
+	}
+
+	public void setLogo(String logo) {
+		this.logo = logo;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getManager() {
+		return manager;
+	}
+
+	public void setManager(String manager) {
+		this.manager = manager;
 	}
 
 	public List<JoueurDTOShort> getJoueurs() {

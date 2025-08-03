@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: head"></head>
+
+<body>
+
+	<div th:replace="fragments/header :: header"></div>
+  
+  	<a data-th-href="@{/santes/{id}(id=${sante.id})}" class="team-card-link" th:each="sante,iter : ${santes}">
+  		<div class="team-card">
+			<img th:src="@{/img/team_logos/{logo}(logo=${sante.logo})}" alt="Team Logo" class="team-logo" />
+		    <div class="team-info">
+				<h2 th:utext="${sante.name}">Team Ndole</h2>
+				<p><strong>Pays :</strong> <span th:utext="${sante.country}">CAMEROUN</span></p>
+				<p><strong>Adresse :</strong> <span th:utext="${sante.address}">Douala, Cameroon</span></p>
+				<p><strong>Responsable :</strong> <span th:utext="${sante.manager}">LOGICIEL</span></p>
+				<div class="team-extra">
+		        	Joined: June 2025
+				</div>
+			</div>
+		</div>
+  	</a>
+	
+	<div th:replace="fragments/footer :: footer"></div>
+
+</body>

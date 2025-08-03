@@ -33,6 +33,18 @@ public class Sante {
 	@Column(name = "NAME")
     private String name;
 	
+	@Column(name = "LOGO")
+    private String logo;
+	
+	@Column(name = "COUNTRY")
+    private String country;
+	
+	@Column(name = "ADDRESS")
+    private String address;
+	
+	@Column(name = "MANAGER")
+    private String manager;
+	
 	@OneToMany(mappedBy = "sante", cascade=CascadeType.ALL)
 	@JsonManagedReference(value="jouers_sante")
 	private List<Joueur> joueurs = new ArrayList<>();

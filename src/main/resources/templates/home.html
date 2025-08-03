@@ -1,25 +1,70 @@
 <!doctype html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<title>Deux Zero | Sante</title>
+<head th:replace="fragments/header :: head"></head>
 
 <body>
-
-	<div th:replace="fragments/header :: nav"></div>
-
-	<p>Bonjour</p>
 	
-	<p>LANAYAL a marqué 3 buts lors de son premier match, pour faire gagner son équipe 3-0 en entrant en cours de match en plus, Performance Exceptionnelle</p>
-	<p>KAMGA a marqué un but de la tête, au petit goals en plus, but exceptionnel.</p>
-	<p>malheureusement l'histoire ne retiendra pas.</p>
-	<p>Ne soyez ni KAMGA ni LANAYAL, Gravez vos performances dans l'histoire</p><br>
+	<div th:replace="fragments/header :: header"></div>	
+	<div th:if="${successMessage}" th:text="${successMessage}" id="successMsg" style="display:none;"></div>
+	
+	<section class="hero">
+		<div class="hero-content">
+			<h1>Mon Ndole</h1>
+			<p>Ton match, tes stats, ton histoire.</p>
+			<a href="/santes" class="hero-button">Découvrir la plateforme</a>
+		</div>
+	</section>
+	
+	<section class="stats-section">
+		<h2>Notre impact aujourd'hui</h2>
+		<p>Mon Ndole suit déjà des équipes à travers plusieurs quartiers du monde.</p>
+		<div class="stats">
+		    <div class="stat-card">
+		      <h2 th:utext="${nombreDeSantes}">0</h2>
+		      <p>Équipes suivies</p>
+		    </div>
+		    <div class="stat-card">
+		      <h2 th:utext="${nombreDeJoueurs}">0</h2>
+		      <p>Joueurs enregistrés</p>
+		    </div>
+		    <div class="stat-card">
+		      <h2 th:utext="${nombreDeMatchs}">0</h2>
+		      <p>Matchs dans l'histoire</p>
+		    </div>
+		</div>
+	</section>
+	
+	
+	<section class="cta">
+		<h2>Tu veux tester Mon Ndole avant tout le monde ?</h2>
+		<p>Inscris-toi pour recevoir un accès anticipé à la plateforme dès son lancement officiel.</p>
+	    <form action="/subscribe" method="post">
+	      <input type="email" name="email" placeholder="ton@email.com" required />
+	      <button type="submit">Je m'inscris</button>
+	    </form>
+	</section>
+  
+	<section class="testimonials">
+		<div class="testimonial">
+			<p>"Grâce à Mon Ndole, notre équipe peut enfin suivre ses stats comme les pros."</p>
+			<strong>– Coach Mballa, Ndjamena United</strong>
+		</div>
+	</section>
 
-	<ul>
-		<span th:each="sante,iter : ${santes}">
-			<a data-th-href="@{/santes/{id}(id=${sante.id})}">
-				<li th:utext="${sante.name}"></li>
-			</a>	
-		</span>
-		
-	</ul>
+  <div th:replace="fragments/footer :: footer"></div>
 
 </body>
+
+
+<script>
+    // On page load, check if there's a success message from the server
+    window.onload = function() {
+        const msgDiv = document.getElementById('successMsg');
+        if (msgDiv) {
+            const message = msgDiv.textContent;
+            if (message) {
+                alert(message); // simple browser popup
+            }
+        }
+    };
+</script>

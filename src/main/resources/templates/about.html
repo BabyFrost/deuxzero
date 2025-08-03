@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head th:replace="fragments/header :: head"></head>
+<head>
+    <link rel="stylesheet" th:href="@{/css/about-us-style.css}" />
+</head>
+
+<body>
+
+	<div th:replace="fragments/header :: header"></div>
+
+    <main class="about-container">
+        <h1>📖 À propos de Mon Ndole</h1>
+
+        <section class="about-section">
+            <h2>🎯 Notre mission</h2>
+            <p>
+                Chez <strong>Mon Ndole</strong>, nous croyons que chaque joueur, chaque match et chaque moment compte.
+                Notre mission est de digitaliser le football amateur dans le monde, en offrant une plateforme intuitive
+                pour suivre les performances, l’historique des matchs, et l’évolution des talents locaux.
+            </p>
+        </section>
+
+        <section class="about-section">
+            <h2>⚽ Pourquoi “Mon Ndole” ?</h2>
+            <p>
+                Dans le football de rue au Cameroun, dire “<em>c’est mon ndolé</em>” signifie : <strong>“c’est mon joueur vedette”</strong>.
+                C’est une manière affectueuse et valorisante de reconnaître le talent. Notre plateforme porte ce nom pour célébrer les
+                héros du terrain, les passionnés, et les équipes locales.
+            </p>
+        </section>
+
+        <section class="about-section">
+            <h2>🚀 Ce que nous offrons</h2>
+            <ul>
+                <li>Créer et gérer des équipes</li>
+                <li>Enregistrer les joueurs et leurs profils</li>
+                <li>Suivre les matchs, les buts, les passes décisives, et bien plus</li>
+                <li>Accéder à un historique consultable de tous les matchs joués</li>
+            </ul>
+        </section>
+
+        <section class="about-section">
+            <h2>📌 En savoir plus</h2>
+            <p>
+            	Le projet est en constante évolution, construit main dans la main avec les communautés de football amateur.
+                Nous avons encore beaucoup à développer, et nous comptons sur votre soutien pour faire grandir cette vision.
+            </p>
+        </section>
+    </main>
+
+	<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>

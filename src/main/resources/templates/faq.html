@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: head"></head>
+<head>
+    <link rel="stylesheet" th:href="@{/css/faq-style.css}" />
+</head>
+
+<body>
+
+	<div th:replace="fragments/header :: header"></div>
+	
+    <div class="faq-container">
+        <h1>❓ Foire Aux Questions</h1>
+
+        <div class="faq-item">
+            <div class="faq-question">🧾 Qu’est-ce que MonNdole.com ?</div>
+            <div class="faq-answer">
+                MonNdole.com est une plateforme dédiée aux ligues de football amateur. Elle permet de gérer les joueurs, enregistrer les matchs, suivre les performances et valoriser les talents locaux.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">⚙️ Comment inscrire mon équipe ?</div>
+            <div class="faq-answer">
+                Vous pouvez inscrire votre équipe via la section <a th:href="@{/santes/enregistrer}">"Enregistrer une équipe"</a> du site. Une fois validée, vous aurez accès à un espace d’administration dédié.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">📊 Qui peut voir mes statistiques ?</div>
+            <div class="faq-answer">
+                Toutes les statistiques publiées sont visibles par les visiteurs du site, y compris les recruteurs, supporters et autres équipes. C’est une vitrine pour les joueurs et leurs performances.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">📱 Y a-t-il une application mobile ?</div>
+            <div class="faq-answer">
+                Pas encore, mais nous y travaillons ! En attendant, notre site est entièrement responsive et accessible sur smartphone.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">🆘 J’ai un problème technique, que faire ?</div>
+            <div class="faq-answer">
+                Vous pouvez nous contacter directement via Instagram ou en envoyant un message à <a href="mailto:support@monndole.com">support@monndole.com</a>.
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">💰 C’est quoi la valeur marchande ?</div>
+            <div class="faq-answer">
+                La <strong>valeur marchande</strong> est un indicateur chiffré qui représente la "valeur virtuelle" d’un joueur au sein de Mon Ndole. 
+                Elle permet de comparer les joueurs entre eux et reflète leur impact global sur le terrain.
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">📈 Comment est calculée la valeur marchande ?</div>
+            <div class="faq-answer">
+                <p>La valeur marchande est automatiquement calculée à partir de plusieurs critères, dont : </p>
+                <ul>
+                    <li>📅 Régularité des participations aux matchs</li>
+                    <li>⚽ Nombre de buts et passes décisives</li>
+                    <li>🎯 Performances récentes (forme)</li>
+                    <li>🏆 Récompenses ou distinctions obtenues</li>
+                </ul>
+                <p>Elle évolue au fil du temps et reflète la contribution réelle du joueur à son équipe. </p>
+                
+                🧮 <strong>Formule actuelle :</strong><br/>
+                
+		        
+		        <ul>
+		            <li>📅 <strong>Matchs joués</strong> : +1 pt par match</li>
+		            <li>⚽ <strong>Buts marqués</strong> : +5 pts par but</li>
+		            <li>🎯 <strong>Passes décisives</strong> : +3 pts par passe</li>
+		            <li>🏅 <strong>Man of the Match</strong> : +5 pts par distinction</li>
+		            <li>💠 <strong>Points divers</strong> : cumulés à partir des résultats de match</li>
+		            <ul>
+		                <li>✅ Victoire de l'équipe : +3 points</li>
+		                <li>➖ Match nul : +1 point</li>
+		                <li>❌ Défaite : 0 point</li>
+		            </ul>
+		        </ul>
+		        
+		        <p>
+				    La formule est amenée à évoluer au fil du temps pour mieux refléter les performances réelles et s’adapter au contexte de chaque match.
+				</p>
+		        
+            </div>
+        </div>
+        
+    </div>
+    
+    <div th:replace="fragments/footer :: footer"></div>
+    
+</body>
+</html>
+
+<script>
+        document.addEventListener("DOMContentLoaded", () => {
+            document.querySelectorAll(".faq-question").forEach(q => {
+                q.addEventListener("click", () => {
+                    q.parentElement.classList.toggle("active");
+                });
+            });
+        });
+</script>

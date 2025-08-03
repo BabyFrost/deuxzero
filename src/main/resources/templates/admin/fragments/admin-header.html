@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title th:text="${pageTitle} ?: 'Mon Ndole | Ton match, tes stats, ton histoire'">Mon Ndole</title>
+    <link rel="stylesheet" th:href="@{/css/admin/admin-style.css}" />
+    <link rel="icon" th:href="@{/assets/monndole-logo.png}" type="image/png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="canonical" th:href="@{${#httpServletRequest.requestURL}}" />
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+<!--                 <a class="logo" th:href="@{/}">Mon <span class="highlight">Ndole</span></a> -->
+				<a class="logo" th:href="@{/}">
+				    <img src="/assets/monndole-logo.png" alt="Mon Ndole Logo" style="height: 60px;" />
+				    <span class="highlight">Mon Ndole</span>
+				</a>
+                
+                <input type="checkbox" id="menu-toggle" />
+                <label for="menu-toggle" class="menu-icon">&#9776;</label>
+                
+                <ul class="nav-links">
+                    <li><a th:href="@{/santes}" title="Équipes"><i class="fas fa-people-group"></i></a></li>
+    				<li><a th:href="@{/about}" title="À propos"><i class="fas fa-circle-info"></i></a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+</body>
+</html>
+
+
+
+<!-- <nav class="navbar navbar-expand-md navbar-light fixed-top bg-blanc" xmlns:sec="http://www.w3.org/1999/xhtml"  xmlns:th="http://www.thymeleaf.org"> -->
+    
+<!--     <a class="navbar-brand" data-th-href="@{/}">  -->
+<!--     	<h1>MonNdole.com</h1>	 -->
+<!--     </a> -->
+<!--     <p>Ton match, tes stats, ton histoire</p> -->
+<!-- </nav> -->

@@ -19,7 +19,15 @@ public class JoueurService {
 	private JoueurRepository joueurRepository;
 	
 	public Joueur getJoueurById( Long id ) throws ResourceNotFoundException {	
-		return joueurRepository.findById(id).orElseThrow( () -> new ResourceNotFoundException("No such Panier !") );
+		return joueurRepository.findById(id).orElseThrow( () -> new ResourceNotFoundException("No such Joueur !") );
+	}
+	
+	public Joueur getJoueurByName( String name ) throws ResourceNotFoundException {	
+		return joueurRepository.findByName(name).orElseThrow( () -> new ResourceNotFoundException("No such Joueur !") );
+	}
+	
+	public Joueur getJoueurByHandle( String handle ) throws ResourceNotFoundException {	
+		return joueurRepository.findByHandle(handle).orElseThrow( () -> new ResourceNotFoundException("No such Handle !") );
 	}
 	
 	public List<Joueur> getAllJoueurs() throws ResourceNotFoundException {	

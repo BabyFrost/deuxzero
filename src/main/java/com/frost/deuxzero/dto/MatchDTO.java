@@ -16,6 +16,7 @@ public class MatchDTO {
 	private MatchEquipeDTO equipeB;
 	private List<ButDTO> buts = new ArrayList<>();
 	private JoueurDTOShort motm;
+	private boolean canVoteMotm;
 	
 	public MatchDTO () { }
 	
@@ -27,6 +28,7 @@ public class MatchDTO {
 		this.equipeA = new MatchEquipeDTO( match.getEquipeA() );
 		this.equipeB = new MatchEquipeDTO( match.getEquipeB() );
 		this.motm = new JoueurDTOShort( match.getMotm() );
+		this.canVoteMotm = match.isCanVoteMotm();
 		
 		List<But> listButs = match.getButs();
 		for ( int i=0; i<listButs.size(); i++ ) {
@@ -89,6 +91,14 @@ public class MatchDTO {
 
 	public void setMotm(JoueurDTOShort motm) {
 		this.motm = motm;
+	}
+
+	public boolean isCanVoteMotm() {
+		return canVoteMotm;
+	}
+
+	public void setCanVoteMotm(boolean canVoteMotm) {
+		this.canVoteMotm = canVoteMotm;
 	}
 
 }

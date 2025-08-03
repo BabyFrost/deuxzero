@@ -76,5 +76,9 @@ public class MatchEquipe {
 	@OneToMany(mappedBy = "equipe", cascade=CascadeType.ALL)
 	@JsonManagedReference(value="buts_equipe")
 	private List<But> buts = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "equipe", cascade=CascadeType.ALL)
+	@JsonManagedReference(value="highlights_equipe")
+	private List<MatchHighlight> highlights = new ArrayList<>();
 
 }

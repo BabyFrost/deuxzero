@@ -57,6 +57,10 @@ public class Matchx {
 	private List<But> buts = new ArrayList<>();
 	
 	@OneToMany(mappedBy = "match", cascade=CascadeType.ALL)
+	@JsonManagedReference(value="MotmVote_match")
+	private List<MotmVote> motmVotes = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "match", cascade=CascadeType.ALL)
 	@JsonManagedReference(value="highlights_match")
 	private List<MatchHighlight> highlights = new ArrayList<>();
 	
@@ -64,5 +68,8 @@ public class Matchx {
 	@JsonBackReference(value="motm_joueur")
 	@JoinColumn(name="MOTM")
 	private Joueur motm;
+	
+	@JoinColumn(name="CAN_VOTE_MOTM")
+	private boolean canVoteMotm;
 
 }

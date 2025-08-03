@@ -18,6 +18,8 @@ public interface MatchRepository extends JpaRepository < Matchx, Long > {
 	
 	List<Matchx> findBySanteOrderByDateAsc( Sante sante );
 	
+	List<Matchx> findBySanteAndDateBetweenOrderByDateAsc( Sante sante, Long startDate, Long endDate );
+	
 	//List<Matchx> findByJoueurOrderByDateAsc( Joueur joueur );
 	
 	Optional<Matchx> findByEquipeA( MatchEquipe equipe );

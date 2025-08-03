@@ -83,9 +83,11 @@ public class JoueurDTO {
 		 * Points = 1 pts,
 		 * But = 5 pts,
 		 * Passe Decisive = 3 pts,
-		 * Man of the match = 3 pts,
+		 * Man of the match = 5 pts,
 		 */
-		this.valeurM = this.points + this.matchsJ + (this.butsM*5) + (this.passesD*3) + (this.motmsR*3);
+		this.valeurM = this.points + this.matchsJ + (this.butsM*5) + (this.passesD*3) + (this.motmsR*5);
+		
+		//this.valeurM = this.points + this.matchsJ + (this.butsM*3) + (this.passesD*2) + (this.motmsR*3); V2 to come !
 	}
 
 	public Long getId() {
