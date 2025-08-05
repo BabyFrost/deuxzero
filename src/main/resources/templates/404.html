@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: head"></head>
+<head>
+    <link rel="stylesheet" th:href="@{/css/404-style.css}" />
+</head>
+
+<body>
+
+	<div th:replace="fragments/header :: header"></div>
+	
+    <div class="error-container">
+		<h1>404</h1>
+		<h2>Page introuvable</h2>
+		<p>
+			La page que vous cherchez n'existe pas ou n'est plus disponible.
+		</p>
+		<p>
+			Peut-être avez-vous tenté une feinte un peu trop risquée ?
+		</p>
+	
+		<div class="error-actions">
+			<a th:href="@{/}" class="btn-primary">🏠 Retour à l’accueil</a>
+			<a th:href="@{/santes}" class="btn-secondary">📋 Voir les équipes</a>
+		</div>
+	</div>
+
+    
+    <div th:replace="fragments/footer :: footer"></div>
+    
+</body>
+</html>

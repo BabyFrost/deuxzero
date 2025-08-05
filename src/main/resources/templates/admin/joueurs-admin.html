@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: head"></head>
+<head th:replace="admin/fragments/side-menu :: head"></head>
+<head>
+    <link rel="stylesheet" th:href="@{/css/admin/match-admin-style.css}" />
+</head>
+
+<body>
+	
+	<!-- Top Navbar -->
+	<div th:replace="fragments/header :: header"></div>
+	
+	<!-- Layout container (centered) -->
+    <div class="d-flex h-100" style="background: red;">
+    
+	    <div th:replace="admin/fragments/side-menu :: side-menu"></div>
+	    
+	    <main class="flex-grow-1 p-4 overflow-auto" style="background: yellow;">
+	    
+	        <h2 class="mb-4"><i class="fas fa-users"></i> Liste des Joueurs</h2>
+
+
+			<a th:href="@{/admin/joueurs/new}" class="btn btn-primary mb-3">➕ Ajouter un Joueur</a>
+			
+		    <div class="table-responsive">
+			    <table class="table table-striped table-bordered align-middle text-center">
+			        <thead class="table-light">
+			            <tr>
+			                <th>Surnom</th>
+			                <th>Prénom</th>
+			                <th>Nom</th>
+			                <th>Handle</th>
+			                <th>Actions</th>
+			            </tr>
+			        </thead>
+			        <tbody>
+			            <tr th:each="joueur : ${joueurs}">
+			                <td th:text="${joueur.name}">J Doe</td>
+			                <td th:text="${joueur.firstname}">John</td>
+			                <td th:text="${joueur.lastname}">Doe</td>
+			                <td th:text="${joueur.handle}">@johnd</td>
+			                <td>
+			                    <a th:href="@{'/admin/joueurs/edit/' + ${joueur.id}}" class="btn btn-info btn-sm me-1">Update</a>
+			                    <a th:href="@{'/admin/joueurs/delete/' + ${joueur.id}}" class="btn btn-danger btn-sm me-1">Delete</a>
+			                    <a th:href="@{'/admin/joueurs/' + ${joueur.id}}" class="btn btn-success btn-sm">View</a>
+			                </td>
+			            </tr>
+			        </tbody>
+			    </table>
+			</div>
+	        
+	    </main>
+	    
+	</div>
+    
+    <!-- Footer -->
+    <div th:replace="fragments/footer :: footer"></div>
+    
+</body>
+</html>

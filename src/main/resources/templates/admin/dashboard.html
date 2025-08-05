@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: head"></head>
+<head th:replace="admin/fragments/side-menu :: head"></head>
+
+<body>
+	
+	<!-- Top Navbar -->
+	<div th:replace="fragments/header :: header"></div>
+	
+	<!-- Layout container (centered) -->
+    <div class="d-flex">
+	    <div th:replace="admin/fragments/side-menu :: side-menu"></div>
+	    <main class="flex-grow-1 p-4">
+	    
+	        <!-- Your custom content goes here -->
+	        
+	    </main>
+	</div>
+    
+    <!-- Footer -->
+    <div th:replace="fragments/footer :: footer"></div>
+    
+</body>
+</html>

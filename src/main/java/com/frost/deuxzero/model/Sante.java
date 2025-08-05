@@ -45,6 +45,9 @@ public class Sante {
 	@Column(name = "MANAGER")
     private String manager;
 	
+	@Column(name = "ACCESS_CODE")
+    private String accessCode;
+	
 	@OneToMany(mappedBy = "sante", cascade=CascadeType.ALL)
 	@JsonManagedReference(value="jouers_sante")
 	private List<Joueur> joueurs = new ArrayList<>();

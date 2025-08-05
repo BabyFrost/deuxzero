@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" th:href="@{/css/admin/side-menu-style.css}" />
+</head>
+
+<div th:fragment="side-menu" class="admin-sidebar d-flex flex-column p-3 bg-light">
+
+    <div class="sidebar-section-title">Club santé Gießen</div>
+    <ul class="nav flex-column">
+        <li><a th:href="@{/admin/joueurs}" class="nav-link active"><i class="fas fa-tachometer-alt me-2"></i>JOUEURS</a></li>
+        <li><a th:href="@{/admin/matchs}" class="nav-link"><i class="fas fa-tachometer-alt me-2"></i>MATCHS</a></li>
+        <li><a th:href="@{/admin/equipe}" class="nav-link"><i class="fas fa-tachometer-alt me-2"></i>CONFIGURATION</a></li>
+    </ul>
+
+    <div class="sidebar-section-title">ADMIN AREA</div>
+    <ul class="nav flex-column">
+<!--         <li><a th:href="@{/profile}" class="nav-link"><i class="fas fa-user me-2"></i> Profil</a></li> -->
+<!--         <li><a th:href="@{/settings}" class="nav-link"><i class="fas fa-cog me-2"></i> Paramètres</a></li> -->
+<!--         <li><a th:href="@{/logout}" class="nav-link text-danger"><i class="fas fa-power-off me-2"></i> Déconnexion</a></li> -->
+
+		<li><a href="#" class="nav-link"><i class="fas fa-user me-2"></i> Profil</a></li>
+        <li><a href="#" class="nav-link"><i class="fas fa-cog me-2"></i> Paramètres</a></li>
+        <li><a href="#" class="nav-link text-danger"><i class="fas fa-power-off me-2"></i> Déconnexion</a></li>
+    </ul>
+    
+</div>
+
+</html>

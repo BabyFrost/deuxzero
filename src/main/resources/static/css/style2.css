@@ -366,25 +366,6 @@ th.sorted-desc::after {
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
 }
 
-/* About Page Header */
-.about-header {
-    background-color: #004d26;
-    color: white;
-    text-align: center;
-    padding: 2rem 1rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.about-header h1 {
-    margin: 0;
-    font-size: 2.5rem;
-}
-
-.about-header p {
-    font-size: 1.2rem;
-    margin-top: 1rem;
-}
-
 .hero {
   background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
               url('/img/hero3.jpg') center/cover no-repeat;

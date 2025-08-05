@@ -52,13 +52,23 @@ public class homeController {
 	
 	@GetMapping("/{path}")
     public String other (@PathVariable String path) {
-		String handle = path.substring(1); // Remove the '#' character
-		//String handle = path;
-		System.out.println("Handle : "+handle);
-		Joueur joueur = joueurService.getJoueurByHandle(handle);
 		
-		if (joueur != null) return "redirect:/joueurs/"+joueur.getId();
+		if (path.charAt(0)=='@') {
+			String handle = path.substring(1); // Remove the '@' character
+			//String handle = path;
+			System.out.println("Handle : "+handle);
+			Joueur joueur = joueurService.getJoueurByHandle(handle);
+			if (joueur != null) return "redirect:/joueurs/"+joueur.getId();
+		} else {
+			return "redirect:/404";
+		}
+		
 		return "redirect:/";
+    }
+	
+	@GetMapping("/404")
+    public String Get404 () {
+    	return "404";
     }
 	
 }

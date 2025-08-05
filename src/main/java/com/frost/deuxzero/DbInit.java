@@ -1557,6 +1557,22 @@ public class DbInit {
 			joueur.setSante(sante);
 			joueurRepository.save(joueur);
 			
+			joueur = new Joueur();
+			joueur.setName("DESIRE DOUE U-14");
+			joueur.setSante(sante);
+			joueurRepository.save(joueur);
+			
+			joueur = new Joueur();
+			joueur.setName("PATRICK");
+			joueur.setSante(sante);
+			joueurRepository.save(joueur);
+			
+			joueur = new Joueur();
+			joueur.setName("NEW GK");
+			joueur.setSante(sante);
+			joueurRepository.save(joueur);
+			
+			
 		equipe = new Equipe();
 		equipe.setName("ORANGES");
 		equipe.setSante(sante);
@@ -3950,19 +3966,19 @@ public class DbInit {
 				
 				matchHighlight = new MatchHighlight();
 				matchHighlight.setMatch(match);
-				matchHighlight.setDescription("ALBERTO, L'homme du match qui claque un super but d'une frappe tendu et puissante donner l'avantage a son equipe");
+				matchHighlight.setDescription("💥 ALBERTO, élu Homme du Match, claque un superbe but sur une frappe tendue et puissante, offrant l’avantage décisif à son équipe. Précis, tranchant, décisif.");
 				matchHighlight.setJoueur(joueurRepository.findByName("ALBERTO").get());
 				matchHighlightRepository.save(matchHighlight);
 				
 				matchHighlight = new MatchHighlight();
 				matchHighlight.setMatch(match);
-				matchHighlight.setDescription("AZIZ, qui sort une grosse performance, dans son volume de jeu et sa qualitee avec le ballon");
+				matchHighlight.setDescription("🔋 AZIZ livre une grosse performance, combinant volume de jeu impressionnant et maîtrise technique. Un vrai moteur dans l’entrejeu.");
 				matchHighlight.setJoueur(joueurRepository.findByName("AZIZ").get());
 				matchHighlightRepository.save(matchHighlight);
 				
 				matchHighlight = new MatchHighlight();
 				matchHighlight.setMatch(match);
-				matchHighlight.setDescription("ARMEL, Tres bon match de Armel qui as contribuee tant offensivement qu defensivement");
+				matchHighlight.setDescription("🛡️ ARMEL, très solide des deux côtés du terrain, a contribué aussi bien défensivement qu’offensivement, apportant équilibre et intensité tout au long du match.");
 				matchHighlight.setJoueur(joueurRepository.findByName("ARMEL").get());
 				matchHighlightRepository.save(matchHighlight);
 				
@@ -3971,9 +3987,9 @@ public class DbInit {
 		////////MCARTHUR MATCH 19 ///////////
 		match = new Matchx();
 		match.setSante(sante);
-		match.setMotm( joueurRepository.findByName("PNJ").get() );
+		match.setMotm( joueurRepository.findByName("ACHILLE").get() );
 		match.setDate( 1754067600000L );
-		match.setCanVoteMotm(true);
+		match.setCanVoteMotm(false);
 		//match.setDate( DateFormatConverter.toLocalDateTimeInMilliseconds(new Date()) );
 		matchRepository.save(match);
 		
@@ -4023,7 +4039,332 @@ public class DbInit {
 				matchEquipe.setEncaisses(0);
 				matchEquipeRepository.save(matchEquipe);
 				
+		
+		////////MCARTHUR MATCH 20 ///////////
+		match = new Matchx();
+		match.setSante(sante);
+		match.setMotm( joueurRepository.findByName("ACHILLE").get() );
+		match.setDate( 1754204400000L );
+		match.setCanVoteMotm(false);
+		//match.setDate( DateFormatConverter.toLocalDateTimeInMilliseconds(new Date()) );
+		matchRepository.save(match);
+		
+			matchEquipe = new MatchEquipe();
+			matchEquipe.setEquipe( equipeRepository.findById((long) 5).get() );
+			matchEquipe.setMatchsAsA(match);
+			matchEquipe.setCapitaine( joueurRepository.findByName( "ARMEL" ).get() );
+			matchEquipe.getJoueurs().add( joueurRepository.findByName( "ACHILLE" ).get() );
+			matchEquipe.getJoueurs().add( joueurRepository.findByName( "ARMEL" ).get() );
+			matchEquipe.getJoueurs().add( joueurRepository.findByName( "EBELLE" ).get() );
+			matchEquipe.getJoueurs().add( joueurRepository.findByName( "PANDEV" ).get() );
+			matchEquipe.getJoueurs().add( joueurRepository.findByName( "ALAIN" ).get() );
+			matchEquipe.getJoueurs().add( joueurRepository.findByName( "PRINCE" ).get() );
+			matchEquipe.getJoueurs().add( joueurRepository.findByName( "WELL" ).get() );
+			matchEquipe.getJoueurs().add( joueurRepository.findByName( "ULRICH C" ).get() );
+			matchEquipe.getJoueurs().add( joueurRepository.findByName( "LASSANA" ).get() );
+			matchEquipe.setResultat("N");
+			matchEquipe.setMarques(8);
+			matchEquipe.setEncaisses(8);
+			matchEquipeRepository.save(matchEquipe);
+			
+				matchEquipe = new MatchEquipe();
+				matchEquipe.setEquipe( equipeRepository.findById((long) 6).get() );
+				matchEquipe.setMatchsAsB(match);
+				matchEquipe.setCapitaine( joueurRepository.findByName( "KEVIN" ).get() );
+				matchEquipe.getJoueurs().add( joueurRepository.findByName( "YVAN" ).get() );
+				matchEquipe.getJoueurs().add( joueurRepository.findByName( "KEVIN" ).get() );
+				matchEquipe.getJoueurs().add( joueurRepository.findByName( "AZIZ" ).get() );
+				matchEquipe.getJoueurs().add( joueurRepository.findByName( "KAMGA" ).get() );
+				matchEquipe.getJoueurs().add( joueurRepository.findByName( "PATRICK" ).get() );
+				matchEquipe.getJoueurs().add( joueurRepository.findByName( "HERVE FONGANG" ).get() );
+				matchEquipe.getJoueurs().add( joueurRepository.findByName( "HERVE" ).get() );
+				matchEquipe.getJoueurs().add( joueurRepository.findByName( "NEW GK" ).get() );
+				matchEquipe.getJoueurs().add( joueurRepository.findByName( "HERVE" ).get() );
+				matchEquipe.setResultat("N");
+				matchEquipe.setMarques(8);
+				matchEquipe.setEncaisses(8);
+				matchEquipeRepository.save(matchEquipe);
 				
+				but = new But();
+				but.setEquipe(matchEquipeRepository.findById((long) 5).get());
+				but.setMatch(match);
+				but.setButeur(joueurRepository.findByName("ACHILLE").get());
+				but.setPasseur(joueurRepository.findByName("PANDEV").get());
+				but.setMinute(0);
+				but.setScore("1 : 0");
+				butRepository.save(but);
+				
+				but = new But();
+				but.setEquipe(matchEquipeRepository.findById((long) 5).get());
+				but.setMatch(match);
+				but.setButeur(joueurRepository.findByName("ACHILLE").get());
+				but.setPasseur(joueurRepository.findByName("PANDEV").get());
+				but.setMinute(0);
+				but.setScore("2 : 0");
+				butRepository.save(but);
+				
+				but = new But();
+				but.setEquipe(matchEquipeRepository.findById((long) 5).get());
+				but.setMatch(match);
+				but.setButeur(joueurRepository.findByName("PANDEV").get());
+				but.setPasseur(joueurRepository.findByName("ACHILLE").get());
+				but.setMinute(0);
+				but.setScore("3 : 0");
+				butRepository.save(but);
+				
+				but = new But();
+				but.setEquipe(matchEquipeRepository.findById((long) 5).get());
+				but.setMatch(match);
+				but.setButeur(joueurRepository.findByName("PANDEV").get());
+				but.setPasseur(joueurRepository.findByName("ACHILLE").get());
+				but.setMinute(0);
+				but.setScore("4 : 0");
+				butRepository.save(but);
+				
+				but = new But();
+				but.setEquipe(matchEquipeRepository.findById((long) 5).get());
+				but.setMatch(match);
+				but.setButeur(joueurRepository.findByName("PANDEV").get());
+				but.setPasseur(joueurRepository.findByName("ACHILLE").get());
+				but.setMinute(0);
+				but.setScore("5 : 0");
+				butRepository.save(but);
+				
+				but = new But();
+				but.setEquipe(matchEquipeRepository.findById((long) 5).get());
+				but.setMatch(match);
+				but.setButeur(joueurRepository.findByName("LASSANA").get());
+				but.setPasseur(joueurRepository.findByName("PNJ").get());
+				but.setMinute(0);
+				but.setScore("6 : 0");
+				butRepository.save(but);
+				
+				but = new But();
+				but.setEquipe(matchEquipeRepository.findById((long) 5).get());
+				but.setMatch(match);
+				but.setButeur(joueurRepository.findByName("PNJ").get());
+				but.setPasseur(joueurRepository.findByName("PNJ").get());
+				but.setMinute(0);
+				but.setScore("7 : 0");
+				butRepository.save(but);
+				
+				but = new But();
+				but.setEquipe(matchEquipeRepository.findById((long) 5).get());
+				but.setMatch(match);
+				but.setButeur(joueurRepository.findByName("PNJ").get());
+				but.setPasseur(joueurRepository.findByName("PNJ").get());
+				but.setMinute(0);
+				but.setScore("8 : 0");
+				butRepository.save(but);
+				
+				but = new But();
+				but.setEquipe(matchEquipeRepository.findById((long) 6).get());
+				but.setMatch(match);
+				but.setButeur(joueurRepository.findByName("YVAN").get());
+				but.setPasseur(joueurRepository.findByName("PNJ").get());
+				but.setMinute(0);
+				but.setScore("8 : 1");
+				butRepository.save(but);
+				
+				but = new But();
+				but.setEquipe(matchEquipeRepository.findById((long) 6).get());
+				but.setMatch(match);
+				but.setButeur(joueurRepository.findByName("YVAN").get());
+				but.setPasseur(joueurRepository.findByName("PNJ").get());
+				but.setMinute(0);
+				but.setScore("8 : 2");
+				butRepository.save(but);
+				
+				but = new But();
+				but.setEquipe(matchEquipeRepository.findById((long) 6).get());
+				but.setMatch(match);
+				but.setButeur(joueurRepository.findByName("HERVE FONGANG").get());
+				but.setPasseur(joueurRepository.findByName("PNJ").get());
+				but.setMinute(0);
+				but.setScore("8 : 3");
+				butRepository.save(but);
+				
+				but = new But();
+				but.setEquipe(matchEquipeRepository.findById((long) 6).get());
+				but.setMatch(match);
+				but.setButeur(joueurRepository.findByName("HERVE FONGANG").get());
+				but.setPasseur(joueurRepository.findByName("PNJ").get());
+				but.setMinute(0);
+				but.setScore("8 : 4");
+				butRepository.save(but);
+				
+				but = new But();
+				but.setEquipe(matchEquipeRepository.findById((long) 6).get());
+				but.setMatch(match);
+				but.setButeur(joueurRepository.findByName("PNJ").get());
+				but.setPasseur(joueurRepository.findByName("PNJ").get());
+				but.setMinute(0);
+				but.setScore("8 : 5");
+				butRepository.save(but);
+				
+				but = new But();
+				but.setEquipe(matchEquipeRepository.findById((long) 6).get());
+				but.setMatch(match);
+				but.setButeur(joueurRepository.findByName("PNJ").get());
+				but.setPasseur(joueurRepository.findByName("PNJ").get());
+				but.setMinute(0);
+				but.setScore("8 : 6");
+				butRepository.save(but);
+				
+				but = new But();
+				but.setEquipe(matchEquipeRepository.findById((long) 6).get());
+				but.setMatch(match);
+				but.setButeur(joueurRepository.findByName("PNJ").get());
+				but.setPasseur(joueurRepository.findByName("PNJ").get());
+				but.setMinute(0);
+				but.setScore("8 : 7");
+				butRepository.save(but);
+				
+				but = new But();
+				but.setEquipe(matchEquipeRepository.findById((long) 6).get());
+				but.setMatch(match);
+				but.setButeur(joueurRepository.findByName("PNJ").get());
+				but.setPasseur(joueurRepository.findByName("PNJ").get());
+				but.setMinute(0);
+				but.setScore("8 : 8");
+				butRepository.save(but);
+				
+				matchHighlight = new MatchHighlight();
+				matchHighlight.setMatch(match);
+				matchHighlight.setDescription("🎇 Score final : 8-8 Un match complètement fou, riche en buts et rebondissements, où chaque minute a offert son lot de spectacle !");
+				matchHighlightRepository.save(matchHighlight);
+				
+				matchHighlight = new MatchHighlight();
+				matchHighlight.setMatch(match);
+				matchHighlight.setDescription("💪 ACHILLES signe une performance XXL, enchaînant 2 buts et 3 passes décisives. Précis, inspiré, au cœur de chaque action dangereuse.");
+				matchHighlight.setJoueur(joueurRepository.findByName("ACHILLE").get());
+				matchHighlightRepository.save(matchHighlight);
+				
+				matchHighlight = new MatchHighlight();
+				matchHighlight.setMatch(match);
+				matchHighlight.setDescription("🎩 PANDEV brille également avec 3 buts et 2 passes décisives. Un match complet, entre finition clinique et vision de jeu. Leader offensif total.");
+				matchHighlight.setJoueur(joueurRepository.findByName("PANDEV").get());
+				matchHighlightRepository.save(matchHighlight);
+				
+				matchHighlight = new MatchHighlight();
+				matchHighlight.setMatch(match);
+				matchHighlight.setDescription("⚡ HERVÉ FONGANG s’illustre avec un doublé, enchaînant courses tranchantes et sang-froid devant le but. Présent dans les bons espaces.");
+				matchHighlight.setJoueur(joueurRepository.findByName("HERVE FONGANG").get());
+				matchHighlightRepository.save(matchHighlight);
+				
+				matchHighlight = new MatchHighlight();
+				matchHighlight.setMatch(match);
+				matchHighlight.setDescription("🧤 NEW GK, malgré le score, sort une top performance dans les cages, avec une présence rassurante, des relances propres et un penalty stoppé. Prestation à saluer !");
+				matchHighlight.setJoueur(joueurRepository.findByName("NEW GK").get());
+				matchHighlightRepository.save(matchHighlight);
+				
+				matchHighlight = new MatchHighlight();
+				matchHighlight.setMatch(match);
+				matchHighlight.setDescription("🔥 YVAN répond présent avec 2 buts au compteur, toujours bien placé et prêt à faire parler la poudre. Efficace et disponible.");
+				matchHighlight.setJoueur(joueurRepository.findByName("YVAN").get());
+				matchHighlightRepository.save(matchHighlight);
+				
+				matchHighlight = new MatchHighlight();
+				matchHighlight.setMatch(match);
+				matchHighlight.setDescription("🥅 ALAIN, repositionné dans les buts, se sacrifie pour l’équipe et se montre déterminant avec plusieurs interventions décisives. Lecture de jeu, sorties intelligentes - gardien de l’ombre, héros du jour.");
+				matchHighlight.setJoueur(joueurRepository.findByName("YVAN").get());
+				matchHighlightRepository.save(matchHighlight);
+		
+		
+		////////MCARTHUR MATCH 21 ///////////
+		match = new Matchx();
+		match.setSante(sante);
+		match.setMotm( joueurRepository.findByName("DESIRE DOUE U-14").get() );
+		match.setDate( 1754326800000L );
+		match.setCanVoteMotm(false);
+		//match.setDate( DateFormatConverter.toLocalDateTimeInMilliseconds(new Date()) );
+		matchRepository.save(match);
+		
+			matchEquipe = new MatchEquipe();
+			matchEquipe.setEquipe( equipeRepository.findById((long) 5).get() );
+			matchEquipe.setMatchsAsA(match);
+			matchEquipe.setCapitaine( joueurRepository.findByName( "JOSEPH" ).get() );
+			matchEquipe.getJoueurs().add( joueurRepository.findByName( "JOSEPH" ).get() );
+			matchEquipe.getJoueurs().add( joueurRepository.findByName( "LOGICIEL" ).get() );
+			matchEquipe.getJoueurs().add( joueurRepository.findByName( "ULRICH C" ).get() );
+			matchEquipe.getJoueurs().add( joueurRepository.findByName( "CHRIS" ).get() );
+			matchEquipe.getJoueurs().add( joueurRepository.findByName( "ALAIN" ).get() );
+			matchEquipe.getJoueurs().add( joueurRepository.findByName( "HERVE FONGANG" ).get() );
+			matchEquipe.getJoueurs().add( joueurRepository.findByName( "DESIRE DOUE U-14" ).get() );
+			matchEquipe.getJoueurs().add( joueurRepository.findByName( "ACHILLE" ).get() );
+			matchEquipe.getJoueurs().add( joueurRepository.findByName( "ARMAND" ).get() );
+			matchEquipe.getJoueurs().add( joueurRepository.findByName( "ARMAND" ).get() );
+			matchEquipe.getJoueurs().add( joueurRepository.findByName( "SABRI" ).get() );
+			matchEquipe.setResultat("D");
+			matchEquipe.setMarques(0);
+			matchEquipe.setEncaisses(1);
+			matchEquipeRepository.save(matchEquipe);
+			
+				matchEquipe = new MatchEquipe();
+				matchEquipe.setEquipe( equipeRepository.findById((long) 6).get() );
+				matchEquipe.setMatchsAsB(match);
+				matchEquipe.setCapitaine( joueurRepository.findByName( "KAMGA" ).get() );
+				matchEquipe.getJoueurs().add( joueurRepository.findByName( "YVAN" ).get() );
+				matchEquipe.getJoueurs().add( joueurRepository.findByName( "KAMGA" ).get() );
+				matchEquipe.getJoueurs().add( joueurRepository.findByName( "BARCOLA" ).get() );
+				matchEquipe.getJoueurs().add( joueurRepository.findByName( "LANAYAL" ).get() );
+				matchEquipe.getJoueurs().add( joueurRepository.findByName( "PATRICK" ).get() );
+				matchEquipe.getJoueurs().add( joueurRepository.findByName( "JORDAN" ).get() );
+				matchEquipe.getJoueurs().add( joueurRepository.findByName( "AYOCHE" ).get() );
+				matchEquipe.setResultat("V");
+				matchEquipe.setMarques(1);
+				matchEquipe.setEncaisses(0);
+				matchEquipeRepository.save(matchEquipe);
+				
+				but = new But();
+				but.setEquipe(matchEquipeRepository.findById((long) 6).get());
+				but.setMatch(match);
+				but.setButeur(joueurRepository.findByName("YVAN").get());
+				but.setPasseur(joueurRepository.findByName("LANAYAL").get());
+				but.setMinute(35);
+				but.setScore("0 : 1");
+				butRepository.save(but);
+				
+				matchHighlight = new MatchHighlight();
+				matchHighlight.setMatch(match);
+				matchHighlight.setDescription("✅ Score final : 1-0 pour les Verts Une rencontre au rythme très limité, ternie par un manque d’engagement et d’effectif. Mais quelques éclairs individuels ont suffi à faire la différence");
+				matchHighlightRepository.save(matchHighlight);
+				
+				matchHighlight = new MatchHighlight();
+				matchHighlight.setMatch(match);
+				matchHighlight.setDescription("⚡ Quel match du jeune DESIRÉ DOUE, qui a fait mal sur son aile par ses dribbles et son talent naturel. Percutant, insaisissable, il a été le rayon de lumière du match.");
+				matchHighlight.setJoueur(joueurRepository.findByName("DESIRE DOUE U-14").get());
+				matchHighlightRepository.save(matchHighlight);
+				
+				matchHighlight = new MatchHighlight();
+				matchHighlight.setMatch(match);
+				matchHighlight.setDescription("💫 BARCOLA démontre toute sa capacité de dribble et de projection, éliminant à plusieurs reprises ses vis-à-vis. Quelques imprécisions dans le dernier geste, mais une prestation globalement percutante et pleine de promesses.");
+				matchHighlight.setJoueur(joueurRepository.findByName("BARCOLA").get());
+				matchHighlightRepository.save(matchHighlight);
+				
+				matchHighlight = new MatchHighlight();
+				matchHighlight.setMatch(match);
+				matchHighlight.setDescription("🥶 YVAN, parfaitement placé dans la surface, ouvre son pied en une touche pour envoyer le ballon au fond des filets. Un but plein de sang-froid et de lucidité.");
+				matchHighlight.setJoueur(joueurRepository.findByName("YVAN").get());
+				matchHighlightRepository.save(matchHighlight);
+				
+				matchHighlight = new MatchHighlight();
+				matchHighlight.setMatch(match);
+				matchHighlight.setDescription("🎯 LANAYAL prend le dessus sur son latéral, déborde et envoie un centre rasé millimétré pour son attaquant, qui conclut. Une action tranchante et décisive.");
+				matchHighlight.setJoueur(joueurRepository.findByName("LANAYAL").get());
+				matchHighlightRepository.save(matchHighlight);
+				
+				matchHighlight = new MatchHighlight();
+				matchHighlight.setMatch(match);
+				matchHighlight.setDescription("🎯 ALAIN s’est illustré par plusieurs frappes dangereuses, mettant régulièrement la défense sous pression, sans toutefois être récompensé. Une activité offensive constante, à un rien du but.");
+				matchHighlight.setJoueur(joueurRepository.findByName("ALAIN").get());
+				matchHighlightRepository.save(matchHighlight);
+				
+				matchHighlight = new MatchHighlight();
+				matchHighlight.setMatch(match);
+				matchHighlight.setDescription("🕵️‍♂️ HERVÉ FONGANG, agent infiltré ? C’est la rumeur qui circule... Des pertes de balle douteuses, des placements suspects… l’ombre d’une mission sabotage plane sur sa prestation. 😅");
+				matchHighlight.setJoueur(joueurRepository.findByName("HERVE FONGANG").get());
+				matchHighlightRepository.save(matchHighlight);
 				
 				
 				
